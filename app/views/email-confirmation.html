@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/confirmation" method="post">
+      <h1 class="govuk-heading-l">
+       Confirm your email address
+      </h1>
+
+      <p>We have sent confirmation email to your <b>email ID</b></p>
+      <p>Follow the instructions in the email to confirm your user account</p>
+
+      <h2 class="govuk-heading-m">Next Steps</h2>     
+      <p>After your email address  is confirmed you will be able to file for the exemption or submit the due deligence</p>
+      <h2 class="govuk-heading-m">If You haven't received the email</h2>   
+      <p>Our email can take few minutes to arrive.If you cant see it in few minutes check your junk mail folder</p>
+      <p>If you are still unable to access the service.please email <a>supportemailID</a></p>
+      <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

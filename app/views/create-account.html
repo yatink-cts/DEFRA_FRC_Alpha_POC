@@ -1,0 +1,200 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <form class="form" action="/email-confirmation" method="post">
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-heading-xl">
+          Create my account
+          </h2>
+          <p>
+           After Your email address is confirmed you will be able to sign in and register for an exemption or submission of business report
+
+          </p>
+          <p>
+            If you already have account please <a href="/create-account" class="govuk-link">Sign in</a>
+           </p>
+           <h3 class="govuk-heading-m">Email Address</h3>
+          
+          {{ govukWarningText({
+            text: "Creating multiple accounts for the same organisation will not help.",
+            iconFallbackText: "Warning"
+          }) }}
+         
+          {{ govukInput(
+            {
+            label: {
+              text: "Email address"
+            },
+           
+            id: "email",
+            name: "email",
+            type: "email",
+            autocomplete: "email",
+            spellcheck: false
+          }
+          
+          ) }}
+
+          {{ govukInput(
+            {
+            label: {
+              text: "Confirm your email address"
+            },
+           
+            id: "Password",
+            name: "Password",
+            type: "Password",
+            autocomplete: "Password",
+            spellcheck: false
+          }
+          
+          ) }}
+        <h3 class="govuk-heading-m">Your Details</h3>
+
+          {{ govukInput(
+            {
+            label: {
+              text: "First Name"
+            },
+           
+            id: "First Name",
+            name: "First Name",
+            type: "First Name",
+            autocomplete: "First Name",
+            spellcheck: false
+          }
+          
+          ) }}
+          {{ govukInput(
+            {
+            label: {
+              text: "Last Name"
+            },
+           
+            id: "Last Name",
+            name: "Last Name",
+            type: "Last Name",
+            autocomplete: "Last Name",
+            spellcheck: false
+          }
+          
+          ) }}
+          {{ govukInput(
+            {
+            label: {
+              text: "Job Title"
+            },
+           
+            id: "Job Title",
+            name: "Job Title",
+            type: "Job Title",
+            autocomplete: "Job Title",
+            spellcheck: false
+          }
+          
+          ) }}
+          {{ govukInput(
+            {
+            label: {
+              text: "Company Name"
+            },
+           
+            id: "Company Name",
+            name: "Company Name",
+            type: "Company Name",
+            autocomplete: "Company Name",
+            spellcheck: false
+          }
+          
+          ) }}
+        
+          <h3 class="govuk-heading-m">Create a password</h3>        
+
+          
+          <p class="govuk-body">our password must be atleast 8 character long.</p>
+          <p>It must also have at least one of each of the following:
+            
+          </p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>lower-case letter
+            </li>
+            <li>capital letter</li>
+            <li>number</li>
+          </ul>
+
+          {{ govukInput(
+            {
+            label: {
+              text: "Password"
+            },
+           
+            id: "Password",
+            name: "Password",
+            type: "Password",
+            autocomplete: "Password",
+            spellcheck: false
+          }
+          
+          ) }}
+
+          {{ govukInput(
+            {
+            label: {
+              text: "Confirm your Password"
+            },
+           
+            id: "Password",
+            name: "Password",
+            type: "Password",
+            autocomplete: "Password",
+            spellcheck: false
+          }
+          
+          ) }}
+        </div>
+
+
+<p>We will use your contact details to send you information relating to FRC
+  reporting and,with your consent,for the following purpose:
+</p>
+{{ govukCheckboxes({
+  
+  
+  items: [
+    {
+      value: "carcasses",
+      text: "I would like to receive information about webinars,events,and new guidance"
+    },
+    {
+      value: "mines",
+      text: "Iam happy to be contacted for feedback on this service and take part in FRC reporting surveys"
+    }
+   
+  ]
+}) }}
+          
+        
+
+        <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

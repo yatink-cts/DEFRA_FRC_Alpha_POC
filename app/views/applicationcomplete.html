@@ -1,0 +1,27 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/email-confirmation" method="post">
+        {% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+        {{ govukPanel({
+          titleText: "Application Complete",
+          html: "Your reference number<br><strong>HDJ2123F</strong>"
+        }) }}
+      </form>
+
+      {{ govukInsetText({
+        text: "You should save the above reference number for all the future transaction related to above submission."
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

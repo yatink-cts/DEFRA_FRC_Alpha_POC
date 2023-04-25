@@ -1,0 +1,146 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">Check your answers before sending your application</h1>
+
+      <h2 class="govuk-heading-m">FRC details </h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Commodity
+          </dt>
+          <dd class="govuk-summary-list__value">
+           <a>{{ data['FRC'] }}  </a> 
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/Page_2">
+              Change
+              <span class="govuk-visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Commodity
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['FRC'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/Page_2">
+              Change
+              <span class="govuk-visually-hidden"> date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Global turnover
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['AnnualIncome'] }}
+            
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/Page_3">
+              Change
+             
+            </a>
+          </dd>
+        </div>
+        <h2 class="govuk-heading-m">Parent company details </h2>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Parent company
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['ParentCompany'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a href="/Page_4">
+              Change
+              
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Parent company global turnover
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['ParentCompanyAnnualIncome'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/Page_4">
+                Change
+                
+              </a>
+            </dd>
+          </div>
+
+          <h2 class="govuk-heading-m"> Additional documents </h2>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Document category
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['ParentCompanyAnnualIncome'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/Page_4">
+                Change
+                
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Exemption period
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['fromYear'] }} to {{ data['toYear'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/Page_4">
+                Change
+                
+              </a>
+            </dd>
+          </div>
+      </dl>
+
+     
+
+      
+
+      <h2 class="govuk-heading-m">Submit your application</h2>
+
+      <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+      <form action="/Exemption" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+        Submit
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

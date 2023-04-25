@@ -1,0 +1,94 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <form class="form" action="/create-account" method="post">
+
+        <div class="govuk-form-group">
+          <h2 class="govuk-heading-xl">
+           Sign in
+          </h2>
+          <p>
+            If you have a user account enter your email address and password.After signing in to your account you can register for exeption or submit your business report
+
+          </p>
+          
+          {{ govukWarningText({
+            text: "Creating multiple accounts for the same organisation will not help.",
+            iconFallbackText: "Warning"
+          }) }}
+         
+          {{ govukInput(
+            {
+            label: {
+              text: "Email address"
+            },
+           
+            id: "email",
+            name: "email",
+            type: "email",
+            autocomplete: "email",
+            spellcheck: false
+          }
+          
+          ) }}
+
+          {{ govukInput(
+            {
+            label: {
+              text: "Password"
+            },
+           
+            id: "Password",
+            name: "Password",
+            type: "Password",
+            autocomplete: "Password",
+            spellcheck: false
+          }
+          
+          ) }}
+        
+
+        <!-- name: "Password",
+            id: "Password",
+            label: {
+                text: "Password",
+                classes: "govuk-label--l",
+                isPageHeading: true
+            },
+            value: data['Password']
+        
+          }
+        ) }} -->
+        </div>
+
+        
+
+        <button class="govuk-button" data-module="govuk-button">Sign in</button>
+        <div>
+        <a href="/create-account" class="govuk-link">Reset your password</a>
+      </div>
+      </form>
+      <p></p>
+      <div>
+      <h3 class="govuk-heading-m">Don't have user account? </h3>
+      <p> If you are new to the service you will need to create user account.This will allow you to file your exemotion or business reporting</p>
+       <a href="/create-account" class="govuk-link">Create a user account</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

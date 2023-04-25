@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/Page_0" method="post">
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">You've confirmed to email address</h1>
+       
+      </div>
+
+      <p>
+        You will be able to file for your exemption notice as well as report your due deligence
+      </p>
+
+      <h3 class="govuk-heading-m">Editing your contact details or closing your user account</h3>
+      <p>You can edit your contact details within Manage Account</p>
+      <p> You will need to close your user account if you:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>created user account by mistake</li>
+        <li>You no longer work for or manage the FRC reporting for your employer you signed up for</li>
+       
+      </ul>
+      <p> To complete the process for FRC reporting please sign in to your account.</p>
+      <button class="govuk-button" data-module="govuk-button" >Sign in</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

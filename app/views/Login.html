@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <form class="form" action="../Login-answer" method="post">
+
+        <p>
+
+
+
+
+          
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+               
+              </legend>
+              
+
+
+              {{ govukRadios({
+                name: "Accountholder",
+               
+                fieldset: {
+                  legend: {
+                    text: "Have you previously created a user account?",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                  }
+                },
+                items: [
+                  {
+                    value: "Yes",
+                    text: "Yes,I have a user account"
+                  },
+                  {
+                    value: "No",
+                    text: "No,I dont have a user account"
+                  }
+                ]
+              }) }}
+              <p></p>
+              <p>Check if someone else has previously reported exemption for your company,you may use the same account</a>.</p>
+            </fieldset>
+          </div>
+</p>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

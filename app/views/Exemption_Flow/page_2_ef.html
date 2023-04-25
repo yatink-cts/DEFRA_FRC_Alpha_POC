@@ -1,0 +1,135 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <form class="form" action="./views/Section2_FRC/Page1.html" method="post">
+
+        <div class="govuk-form-group">
+          <h3 class="govuk-heading-xl">
+            File your exemption
+          </h3>
+          <p>
+            Please provide the details for your annual exemption
+          </p>
+          
+          <h3 class="govuk-heading-s">Enter your company details</h3>
+          
+         
+         
+          {{ govukInput(
+            {
+            label: {
+              text: "Enter your company name"
+            },
+           
+            id: "companyname",
+            name: "companyname",
+            type: "companyname"
+            
+          }
+          
+          ) }}
+
+          {{ govukInput(
+            {
+            label: {
+              text: "Enter company email Id"
+            },
+           
+            id: "Enter company email Id",
+            name: "Enter company email Id",
+            type: "Enter company email Id",
+            autocomplete: "email",
+            spellcheck: false
+          }
+          ) }}
+          {{ govukInput(
+            {
+            label: {
+              text: "Enter company contact details"
+            },
+           
+            id: "Enter company contact details",
+            name: "Enter company contact details",
+            type: "Enter company contact details",
+            autocomplete: "First Name",
+            spellcheck: false
+          }
+          
+          ) }}
+          
+        
+        <h3 class="govuk-heading-s">Enter your business information</h3>
+
+          {{ govukInput(
+            {
+            label: {
+              text: "First Name"
+            },
+           
+            id: "First Name",
+            name: "First Name",
+            type: "First Name",
+            autocomplete: "First Name",
+            spellcheck: false
+          }
+          
+          ) }}
+          {{ govukInput(
+            {
+            label: {
+              text: "Last Name"
+            },
+           
+            id: "Last Name",
+            name: "Last Name",
+            type: "Last Name",
+            autocomplete: "Last Name",
+            spellcheck: false
+          }
+          
+          ) }}
+          {{ govukInput(
+            {
+            label: {
+              text: "Job Title"
+            },
+           
+            id: "Job Title",
+            name: "Job Title",
+            type: "Job Title",
+            autocomplete: "Job Title",
+            spellcheck: false
+          }
+          
+          ) }}
+          
+          
+        </div>
+
+
+
+          
+        
+
+        <button class="govuk-button" data-module="govuk-button"> Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

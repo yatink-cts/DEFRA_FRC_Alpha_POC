@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" action="/page2" method="post"></form>
+<h2 class="govuk-heading-xl">
+    Which Forest Risk Commodity does your parent company use?
+    </h2>
+    {{ govukCheckboxes({
+  
+  
+        items: [
+          {
+            value: "Palm oil ",
+            text: "Palm oil "
+          },
+          {
+            value: "Soya",
+            text: "Soya"
+          },
+          {
+            value: "Cocoa",
+            text: "Cocoa"
+          },
+          {
+            value: "Cattle",
+            text: "Cattle"
+          },
+         
+         {
+            value: "None of the above",
+            text: "None of the above"
+         }
+        ]
+      }) }}
+      {{ govukInsetText({
+        text: "If you are using more than one commodity, please submit your exemption or report separately."
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+    </form>
+      </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l"> This service is not for you</h1>
+        <p>
+            Based on your answer provided, this service is not for you as your global turnover is 
+            less than 50 million.
+             Please close this page or go back to home page.
+        </p>
+        <button class="govuk-button" data-module="govuk-button">Home</button>
+        {% endblock %}
+

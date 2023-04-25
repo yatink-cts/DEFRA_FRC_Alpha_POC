@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <form class="form" action="/Page_2" method="post">
+
+        <p>
+
+
+
+
+          
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+               
+              </legend>
+              
+              <h2 class="govuk-heading-xl">
+                What do you want to do ?
+                </h2>
+
+               
+
+                <!-- <div class="govuk-grid-row">
+                  
+                  <div class="govuk-grid-column-two-thirds">
+                    <p>govuk-grid-column-two-thirds</p>
+                    <div class="govuk-grid-row">
+                      <div class="govuk-grid-column-one-half-di">
+                        <p>govuk-grid-column-one-halfjk</p>
+                      </div>
+                      <div class="govuk-grid-column-one-half">
+                        <p>govuk-grid-column-one-half</p>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+
+              {{ govukRadios({
+                name: "Exemption",
+               
+               
+                items: [
+                  {
+                    value: "File a new exemption",
+                    text: "File a new exemption"
+                  },
+                  {
+                    value: "Re-submission",
+                    text: "Re-submit an exemption"
+                  },
+                  {
+                    value: "Active-submission",
+                    text: "Access a current exemption"
+                  },
+                  {
+                    value: "File your exemption",
+                    text: "File your exemption"
+                  },
+                  {
+                    value: "File your report ",
+                    text: "File your report "
+                  }
+                ]
+              }) }}
+              {{ govukInsetText({
+                text: "You will be needing a reference number for accessing previous exemption notice or re-submission of existing exemption report."
+              }) }}
+              
+              
+            </fieldset>
+          </div>
+</p>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

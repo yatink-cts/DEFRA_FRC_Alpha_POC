@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    
+
+    <form class="form" action="/PeriodOfExemption" method="post">
+
+      <p>
+        
+
+
+        
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+             
+            </legend>
+            
+
+
+            {{ govukCharacterCount({
+                name: "description",
+                id: "description",
+                maxlength: 200,
+                label: {
+                  text: "What methods have you used to determine your commodity usage?",
+                  classes: "govuk-label--l",
+                  isPageHeading: true
+                }
+               
+              }) }}
+          </fieldset>
+        </div>
+</p>
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+    {% endblock %}
