@@ -1,0 +1,83 @@
+
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+            Provide your parent company details
+          </h1>
+          {{ govukSelect({
+            id: "subject",
+            name: "subject",
+            label: {
+              text: "Parent company name"
+            },
+              hint: {
+              text: "Select the company name from the below list or manually add it"
+            },
+            items: [
+              {
+                value: "choose",
+                text: "Company List",
+                selected: true
+              },
+              {
+                value: "M & S",
+                text: "M & S"
+              },
+              {
+                value: "Primark",
+                text: "Primark"
+              }
+             ]
+          
+          }) }}
+          <p>or</p>
+
+          {{ govukInput({
+            label: {
+              text: "Provide your company name"
+            },
+            hint: {
+              text: "Add your parent company name only if not found in the above list"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "authentication-code",
+            name: "authentication-code",
+            spellcheck: false
+          }) }}
+
+          {{ govukInput({
+            id: "cost",
+            name: "cost",
+            label: {
+              text: "Enter your parent company’s global annual turnover"
+              
+            },
+            prefix: {
+              text: "£"
+            },
+            classes: "govuk-!-width-one-third",
+            spellcheck: false
+          }) }}
+
+    </div>
+</div>
+{% endblock %}

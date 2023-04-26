@@ -4,7 +4,23 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+
+
+
+
+
+
+
+
 {% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
   <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
@@ -22,18 +38,21 @@
 
 
 
-          
-            <dl >
-            {% for item in data['FRC'] %}
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
+        <h2 class="govuk-heading-l">
+            How much of these commodities do you use annually?  
+            </h2>
+            <p>Enter the segregated volume for all the commodities selected</p>
+         
+      <dl>
+        {% for item in data['FRC'] %}
+        
+        <div class="govuk-form-group">
+            <!-- <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                
-              </legend>
-             
-              <h2 class="govuk-heading-xl">
-                What is your commodity volume for an year? 
-                </h2>
+              </legend> -->
+              <p> {{[item]}} </p> 
+              
                 {{ govukInput({
                     label: {
                         id:"commodityvolume",
@@ -49,11 +68,10 @@
                     },
                     spellcheck: false
                   }) }}
-              </dl>
-            </fieldset>
+              
+            <!-- </fieldset> -->
           </div>
-
-</dl>
+        {% endfor %}
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
       </form>
