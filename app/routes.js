@@ -12,6 +12,12 @@ const router4 = govukPrototypeKit.requests.setupRouter()
 const router5 = govukPrototypeKit.requests.setupRouter()
 const router6 = govukPrototypeKit.requests.setupRouter()
 const router7 = govukPrototypeKit.requests.setupRouter()
+let food = {
+  'ketchup': '5 tbsp',
+  'mustard': '1 tbsp',
+  'pickle': '0 tbsp'
+};
+
 // Run this code when a form is submitted to 'juggling-balls-answer'
 router.post('/Login-answer', function (req, res) {
 
@@ -63,7 +69,7 @@ router.post('/Login-answer', function (req, res) {
   }
   else if(AnnualIncome>=500)
   {
-    res.redirect('/Page_6');
+    res.redirect('/CommodityVolumePage');
   }
   
    
@@ -86,7 +92,7 @@ router.post('/Login-answer', function (req, res) {
      
     } else if(ParentCompany =="Yes" ) {
       // Send user to ineligible page
-      res.redirect('/Page_5')
+      res.redirect('/ParentCompanyDetails')
     }
   
   },
@@ -109,13 +115,15 @@ router.post('/Login-answer', function (req, res) {
      
     else  {
       // Send user to ineligible page
-      res.redirect('/Page_6')
+      res.redirect('/CommodityVolumePage')
     }
   
   },
 
   router6.post('/commodityvolume', function (req, res) {
-
+    let count=0;
+    let FRC=new Array();
+    FRC = req.session.data['FRC'];
     
     var commodityvolume = req.session.data['commodityvolume'];
     var AnnualIncome1 = req.session.data['AnnualIncome'];
@@ -123,45 +131,59 @@ router.post('/Login-answer', function (req, res) {
      let fromYear=req.session.data['fromYear'];
      let toYear=req.session.data['toYear'];
      
-    //console.log("year:",year);
+   console.log("commodityvolume:",commodityvolume);
   
-    // Check whether the variable matches a condition
-    
-
-    //   if(commodityvolume<100)
-
-    //   { 
-        
-    //     res.redirect('/checkanswers3')
-    // }
-      // Send user to next page
+   
+  
      
-     if(AnnualIncome1>=500&&commodityvolume>=100) {
-      console.log("enters 1 if");
-      // Send user to ineligible page
-      res.redirect('/checkanswers7')
+     if(AnnualIncome1>=500) {
+      for(var i=0;i<commodityvolume.length;i++)
+      {
+      if(commodityvolume[i]>=100)
+      {
+        count++;
+      }
     }
-    else if(AnnualIncome1>=500&&commodityvolume<100) {
+    console.log("count",count,commodityvolume.length);
+     if(count==commodityvolume.length)
+     {
+      res.redirect('/checkanswers7')
+     }
+    }
+    else if(AnnualIncome1>=500&&commodityvolume[i]<100) {
       console.log("enters 1 if");
       // Send user to ineligible page
       res.redirect('/checkanswers3')
     }
-    else if(AnnualIncome1<500&&commodityvolume<100)
+    else if(AnnualIncome1<500)
     {
-      console.log("enters 02 if");
-      res.redirect('/checkanswers6')
+
+      for(var i=0;i<commodityvolume.length;i++)
+      {
+      if(commodityvolume[i]<100)
+      {
+        count++;
+      }
     }
-    else if(AnnualIncome1<500&&commodityvolume>=100)
-    {
-      console.log("enters 03 if");
+    console.log("count",count,commodityvolume.length);
+     if(count==commodityvolume.length)
+     {
+      res.redirect('/checkanswers6')
+     }
+     else{
       res.redirect('/checkanswers4')
     }
+     }
+      
+    
+    
+  
   
   },
   
   router7.post('/commodityvolume', function (req, res) {
 
-    
+    console.log("commodityvolume:");
     var commodityvolume = req.session.data['commodityvolume'];
     console.log("commodityvolume:",commodityvolume);
     if(commodityvolume<100)

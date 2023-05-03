@@ -59,20 +59,28 @@
           </dd>
         </div>
        
+        {%  for item in  data['FRC']%}
+       
         <div class="govuk-summary-list__row">
+         
           <dt class="govuk-summary-list__key">
-            FRC usage
+            {{item}} 
           </dt>
+         
           <dd class="govuk-summary-list__value">
-            {{ data['commodityvolume'] }}
+             {{data['commodityvolume'][loop.index-1]}}
+          
           </dd>
+         
           <dd class="govuk-summary-list__actions">
             <a href="/Page_6">
               Change
               
             </a>
           </dd>
+        
         </div>
+        {% endfor %} 
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Methodology Used
@@ -159,7 +167,7 @@
 
       <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-      <form action="/Exemption" method="post" novalidate>
+      <form action="/applicationcomplete" method="post" novalidate>
 
         <input type="hidden" name="answers-checked" value="true">
 

@@ -24,20 +24,7 @@
       <h2 class="govuk-heading-m">FRC details </h2>
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <!-- <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Commodity
-          </dt>
-          <dd class="govuk-summary-list__value">
-           <a>{{ data['FRC'] }}  </a> 
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="/Page_2">
-              Change
-              <span class="govuk-visually-hidden"> name</span>
-            </a>
-          </dd>
-        </div> -->
+       
 
 
         {% for item in data['FRC'] %}
@@ -58,20 +45,7 @@
          
         </div>
         {% endfor %}
-        <!-- <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Commodity
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['FRC'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="/Page_2">
-              Change
-              <span class="govuk-visually-hidden"> date of birth</span>
-            </a>
-          </dd>
-        </div> -->
+        
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Global turnover
@@ -88,20 +62,33 @@
           </dd>
         </div>
        
+        {%  for item in  data['FRC']%}
+       
         <div class="govuk-summary-list__row">
+         
           <dt class="govuk-summary-list__key">
-            FRC usage
+            {{item}} 
           </dt>
+         
           <dd class="govuk-summary-list__value">
-            {{ data['commodityvolume'] }}
+             {{data['commodityvolume'][loop.index-1]}}
+          
           </dd>
+         
           <dd class="govuk-summary-list__actions">
             <a href="/Page_6">
               Change
               
             </a>
           </dd>
+        
         </div>
+        {% endfor %} 
+        <!-- {% for item in items %}
+        <li>{{ item.title }}</li>
+      {% else %}
+        <li>This would display if the 'item' collection were empty</li>
+      {% endfor %} -->
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Methodology Used
@@ -159,7 +146,7 @@
 
       <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-      <form action="/Reporting" method="post" novalidate>
+      <form action="/applicationcomplete" method="post" novalidate>
 
         <input type="hidden" name="answers-checked" value="true">
 

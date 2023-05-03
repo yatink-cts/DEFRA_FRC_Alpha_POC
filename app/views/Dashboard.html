@@ -1,0 +1,142 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" action="/Page_1" method="post">
+        <p>Welcome</p>
+      <h1 class="govuk-heading-m">
+        Report your Forest Risk Commodities due diligence
+      </h1>
+      <h3 class="govuk-heading-s"> For [COMPANY NAME]</h3>
+      <button class="govuk-button" data-module="govuk-button">New Submission</button>
+      <div>
+      <p>Submissions</p>
+      {{ govukTable({
+        caption: "In progress",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        head: [
+          {
+            text: "Year"
+          },
+          {
+            text: "Type"
+          },
+          {
+            text: "Action"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "2023 - 2024"
+            },
+            {
+              text: "Reporting"
+            }
+           
+          ],
+          [
+            {
+              text: "Next 33 weeks"
+            },
+            {
+              text: "£109.80 per week"
+            },
+            {
+              text: "£109.80 per week"
+            }
+          ],
+          [
+            {
+              text: "Total estimated pay"
+            },
+            {
+              text: "£4,282.20"
+            },
+            {
+              text: "£109.80 per week"
+            }
+          ]
+        ]
+      }) }}
+    </div>
+    <div>
+        <p>Submissions</p>
+        {{ govukTable({
+          caption: "Completed",
+          captionClasses: "govuk-table__caption--m",
+          firstCellIsHeader: true,
+          head: [
+            {
+              text: "Year"
+            },
+            {
+              text: "Type"
+            },
+            {
+              text: "Action"
+            }
+          ],
+          rows: [
+            [
+              {
+                text: "First 6 weeks"
+              },
+              {
+                text: "£109.80 per week"
+              }
+              ,
+              {
+                text: "£109.80 per week"
+              }
+            ],
+            [
+              {
+                text: "Next 33 weeks"
+              },
+              {
+                text: "£109.80 per week"
+              },
+              {
+                text: "£109.80 per week"
+              }
+            ],
+            [
+              {
+                text: "Total estimated pay"
+              },
+              {
+                text: "£4,282.20"
+              },
+              {
+                text: "£109.80 per week"
+              }
+            ]
+          ]
+        }) }}
+      </div>
+       
+        </form>
+    
+    </div>
+  </div>
+
+{% endblock %}
