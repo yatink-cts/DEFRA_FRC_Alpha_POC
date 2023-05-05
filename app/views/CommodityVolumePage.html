@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 
@@ -16,67 +16,71 @@
 
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
-  tag: {
-    text: "alpha"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+tag: {
+text: "alpha"
+},
+html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      
 
-      <form class="form" action="/Page_7" method="post">
 
-  
+    <form class="form" action="/commodityvolume" method="post">
 
 
 
 
-        <h2 class="govuk-heading-l">
-            How much of these commodities do you use annually?  
-            </h2>
-            <p>Enter the segregated volume for all the commodities selected</p>
-         
+
+
+      <h2 class="govuk-heading-l">
+        How much of these commodities do you use annually?
+      </h2>
+      <p>Enter the segregated volume for all the commodities selected</p>
+
       <dl>
-        {% for item in data['FRC'] %}
-        
+        {% for commodity in data['selectedCommodities'] %}
+
         <div class="govuk-form-group">
-            <!-- <fieldset class="govuk-fieldset">
+          <!-- <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                
               </legend> -->
-              <p> {{[item]}} </p> 
-              
-                {{ govukInput({
-                    label: {
-                        id:"commodityvolume",
-                        name:"commodityvolume"
 
-                   
-                    },
-                    classes: "govuk-input--width-5",
-                    id: "commodityvolume",
-                    name: "commodityvolume",
-                    suffix: {
-                      text: "tonne"
-                    },
-                    spellcheck: false
-                  }) }}
-              
-            <!-- </fieldset> -->
-          </div>
+          {{ govukInput({
+          label: {
+          text:commodity.text
+          },
+          classes: "govuk-input--width-5",         
+          name: commodity.id,
+          value:commodity.value if commodity.value else "",
+          suffix: {
+          text: "tonne"
+          },
+          errorMessage:
+          {
+            text: commodity.errorMessage
+            
+          } if commodity.errorMessage else undefined,
+
+          spellcheck: false
+
+          }) }}
+
+          <!-- </fieldset> -->
+        </div>
         {% endfor %}
+
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
-      </form>
+    </form>
 
-    </div>
   </div>
+</div>
 
 {% endblock %}

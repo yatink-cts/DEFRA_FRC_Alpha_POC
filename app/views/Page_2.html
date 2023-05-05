@@ -1,20 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
 
-
-{% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-{{ govukPhaseBanner({
-  tag: {
-    text: "alpha"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
-{% endblock %}
 
 {% block content %}
 
@@ -22,7 +8,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    
+    {{prop}}
 
     <form class="form" action="../FRC" method="post">
 
@@ -46,52 +32,9 @@
               name: "FRC",
               id:"FRC",
           
-                items: [
-                  {
-                    value: "Palm oil ",
-                    text: "Palm oil "
-                  },
-                  {
-                    value: "Soya",
-                    text: "Soya"
-                  },
-                  {
-                    value: "Cocoa",
-                    text: "Cocoa"
-                  },
-                  {
-                    value: "Beef",
-                    text: "Beef"
-                  },
-                  {
-                    value: "Coffee",
-                    text: "Coffee"
-                  },
-                  {
-                    value: "Leather",
-                    text: "Leather"
-                  },
-                  {
-                    value: "Leather",
-                    text: "Leather"
-                  },
-                  {
-                    value: "Maize",
-                    text: "Maize"
-                  },
-                  {
-                    value: "Rubber",
-                    text: "Rubber"
-                  },
-                  {
-                    divider: "or"
-                  },
-                 
-                 {
-                    value: "None of the above",
-                    text: "None of the above"
-                 }
-                ]
+                items: data['commodities']
+                  
+      
               }) }}
               {{ govukInsetText({
                 text: "If you are not using either of the commodity then please select the last option “None of these” "

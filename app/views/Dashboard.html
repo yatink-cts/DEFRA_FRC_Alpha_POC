@@ -21,118 +21,60 @@
     <div class="govuk-grid-column-two-thirds">
         <form class="form" action="/Page_1" method="post">
         <p>Welcome</p>
-      <h1 class="govuk-heading-m">
+      <h1 class="govuk-heading-l">
         Report your Forest Risk Commodities due diligence
       </h1>
-      <h3 class="govuk-heading-s"> For [COMPANY NAME]</h3>
+      <h3 class="govuk-heading-m"> For [COMPANY NAME]</h3>
       <button class="govuk-button" data-module="govuk-button">New Submission</button>
       <div>
-      <p>Submissions</p>
-      {{ govukTable({
-        caption: "In progress",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: true,
-        head: [
-          {
-            text: "Year"
-          },
-          {
-            text: "Type"
-          },
-          {
-            text: "Action"
-          }
-        ],
-        rows: [
-          [
-            {
-              text: "2023 - 2024"
-            },
-            {
-              text: "Reporting"
-            }
-           
-          ],
-          [
-            {
-              text: "Next 33 weeks"
-            },
-            {
-              text: "£109.80 per week"
-            },
-            {
-              text: "£109.80 per week"
-            }
-          ],
-          [
-            {
-              text: "Total estimated pay"
-            },
-            {
-              text: "£4,282.20"
-            },
-            {
-              text: "£109.80 per week"
-            }
-          ]
-        ]
-      }) }}
-    </div>
-    <div>
         <p>Submissions</p>
-        {{ govukTable({
-          caption: "Completed",
-          captionClasses: "govuk-table__caption--m",
-          firstCellIsHeader: true,
-          head: [
-            {
-              text: "Year"
-            },
-            {
-              text: "Type"
-            },
-            {
-              text: "Action"
-            }
-          ],
-          rows: [
-            [
-              {
-                text: "First 6 weeks"
-              },
-              {
-                text: "£109.80 per week"
-              }
-              ,
-              {
-                text: "£109.80 per week"
-              }
-            ],
-            [
-              {
-                text: "Next 33 weeks"
-              },
-              {
-                text: "£109.80 per week"
-              },
-              {
-                text: "£109.80 per week"
-              }
-            ],
-            [
-              {
-                text: "Total estimated pay"
-              },
-              {
-                text: "£4,282.20"
-              },
-              {
-                text: "£109.80 per week"
-              }
-            ]
-          ]
-        }) }}
-      </div>
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--l">In progress</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Year</th>
+              <th scope="col" class="govuk-table__header">Type</th>
+              <th scope="col" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">2023 - 2024</th>
+              <td class="govuk-table__cell">Report</td>
+              <td class="govuk-table__cell"> <a href="#">Edit </a></td>
+            </tr>
+            
+          </tbody>
+        </table>
+        <p>Submissions</p>
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--l">Completed</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Year</th>
+              <th scope="col" class="govuk-table__header">Type</th>
+              <th scope="col" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">2022 - 2023</th>
+              <td class="govuk-table__cell">Report</td>
+              <td class="govuk-table__cell"> <a href="#">View </a></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">2021-2022</th>
+              <td class="govuk-table__cell">Re-exemption</td>
+              <td class="govuk-table__cell"> <a href="#">View </a></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">2020-2021</th>
+              <td class="govuk-table__cell">Exemption</td>
+              <td class="govuk-table__cell"> <a href="#">View </a></td>
+            </tr>
+            
+          </tbody>
+        </table>
        
         </form>
     

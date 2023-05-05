@@ -1,3 +1,22 @@
 {
-  "serviceName": "FRC Legislative Service"
+  "serviceName": "ppppp",
+  "prop":"descriptionforprop",
+  "commodities": [
+    {
+      "text": "Palm oil",
+      "value": "palmoil",
+      "meta": {
+        "error": false,
+        "errorMessage": "The volume must be less than 200 tonnes"
+      }
+    },
+    {
+      "text": "Soya",
+      "value": "soya",
+      "meta": {
+        "error": false,
+        "errorMessage": "The volume must be less than 200 tonnes"
+      }
+    }
+  ]
 }

@@ -62,21 +62,21 @@
           </dd>
         </div>
        
-        {%  for item in  data['FRC']%}
+        {% for commodity in data['selectedCommodities'] %}
        
         <div class="govuk-summary-list__row">
          
           <dt class="govuk-summary-list__key">
-            {{item}} 
+            {{commodity.text}} 
           </dt>
          
           <dd class="govuk-summary-list__value">
-             {{data['commodityvolume'][loop.index-1]}}
+            {{commodity.value}} 
           
           </dd>
          
           <dd class="govuk-summary-list__actions">
-            <a href="/Page_6">
+            <a href="/CommodityVolumePage">
               Change
               
             </a>
