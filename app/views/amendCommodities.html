@@ -10,12 +10,12 @@
 
     {{prop}}
 
-    <form class="form" action="CommodityVolumeGetController" method="post">
+    <form class="form" action="/thresholdChange" method="post">
 
       <p>
-        <h2 class="govuk-heading-xl">
-          Which forest risk commodities do you use within your UK commercial activity?
-          </h2>
+        <!-- <h2 class="govuk-heading-xl">
+            Which forest risk commodities do you want to amend?
+          </h2> -->
 
 
         
@@ -29,10 +29,16 @@
 
 
             {{ govukCheckboxes({
-              name: "FRC",
-              id:"FRC",
-          
-                items: data['commodities']
+              name: "AmendCommodities",
+            
+              fieldset: {
+                legend: {
+                  text: " Which forest risk commodities do you want to amend?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+            },
+                items: data['amendCommodities']
                   
       
               }) }}
@@ -43,7 +49,7 @@
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 
     </form>
-    <a class="govuk-link" href="Dashboard">Cancel and return to dashboard</a>
+
   </div>
 </div>
 

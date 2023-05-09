@@ -21,15 +21,23 @@
 <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <form class="form" action="/CommodityFileUpload" method="post">
+        <form class="form" action="/Page_2" method="post">
         <h1 class="govuk-fieldset__heading">
-            Enter the monitoring period of your report
+            Enter the reporting period of your exemption
         </h1>
       </legend>
       <div id="passport-issued-hint" class="govuk-hint">
-        This date range should be for a monitoring period in the past
+        This date range should be for a upcoming reporting period
       </div>
       <div class="govuk-date-input" id="passport-issued">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="fromMonth">
+              Month
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="fromMonth" name="fromMonth" type="text" inputmode="numeric">
+          </div>
+        </div>
         <div class="govuk-date-input__item">
           <div class="govuk-form-group">
             <label class="govuk-label govuk-date-input__label" for="fromYear">
@@ -38,23 +46,37 @@
             <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="fromYear" name="fromYear" type="text" inputmode="numeric">
           </div>
         </div>
+        
         <div class="govuk-date-input__item">
           <div class="govuk-form-group">
-            <p>to</p>           
+            <p>to</p>   
           </div>
         </div>
-        <div class="govuk-date-input__item">
+       
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="toMonth">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="toMonth" name="toMonth" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
           <div class="govuk-form-group">
             <label class="govuk-label govuk-date-input__label" for="toYear">
               Year
             </label>
             <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="toYear" name="toYear" type="text" inputmode="numeric">
           </div>
-        </div>
+          </div>
+       
       </div>
         <button class="govuk-button" data-module="govuk-button">Continue</button>
 
     </form>
+    
     </fieldset>
+    <a class="govuk-link" href="Dashboard">Cancel and return to dashboard</a>
   </div>
+ 
   {% endblock %}

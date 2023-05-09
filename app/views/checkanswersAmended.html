@@ -25,16 +25,14 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
        
-
-
-        {% for item in data['FRC'] %}
+        {% for item in data['amendCommodities'] %}
         
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Commodity
           </dt>
           <dd class="govuk-summary-list__value">
-           {{[item]}} 
+           <a> {{item.text}} </a> 
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/Page_2">
@@ -45,71 +43,48 @@
          
         </div>
         {% endfor %}
-        
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Global turnover
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['AnnualIncome'] }}
-            
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="/Page_3">
-              Change
-             
-            </a>
-          </dd>
-        </div>
+      
        
-        {% for commodity in data['selectedCommodities'] %}
-       
-        <div class="govuk-summary-list__row">
-         
-          <dt class="govuk-summary-list__key">
-            {{commodity.text}} 
-          </dt>
-         
-          <dd class="govuk-summary-list__value">
-            {{commodity.value}} 
-          
-          </dd>
-         
-          <dd class="govuk-summary-list__actions">
-            <a href="/CommodityVolumePage">
-              Change
-              
-            </a>
-          </dd>
         
-        </div>
-        {% endfor %} 
-        <!-- {% for item in items %}
-        <li>{{ item.title }}</li>
-      {% else %}
-        <li>This would display if the 'item' collection were empty</li>
-      {% endfor %} -->
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Methodology Used
             </dt>
             <dd class="govuk-summary-list__value">
-                {{ data['description'] }}
+                {{ data['methods'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a href="/Page_5">
+              <a href="/Page_7">
                 Change
                 <span class="govuk-visually-hidden"> date of birth</span>
               </a>
             </dd>
           </div>
+
+       
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Amendment start date
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['passport-issued-day'] }}/  {{ data['passport-issued-month'] }}/ {{ data['passport-issued-year'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/Page_5">
+                Change
+                
+              </a>
+            </dd>
+          </div>
+
           <h2 class="govuk-heading-m"> Additional documents </h2>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Document category
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['ParentCompanyAnnualIncome'] }}
+                Document name
             </dd>
             <dd class="govuk-summary-list__actions">
               <a href="/Page_4">
@@ -118,28 +93,11 @@
               </a>
             </dd>
           </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Exemption period
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['fromMonth'] }}/   {{ data['fromYear'] }} to  {{ data['toMonth'] }}/{{ data['toYear'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a href="/Page_4">
-                Change
-                
-              </a>
-            </dd>
-          </div>
-
-
-       
-      </dl>
 
      
 
+     
+</dl>
       
 
       <h2 class="govuk-heading-m">Submit your application</h2>

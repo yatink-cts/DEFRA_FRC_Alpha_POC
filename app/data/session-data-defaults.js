@@ -1,44 +1,62 @@
 module.exports = {
-
-  "commodities": [
+  "amendCommodities": [
     {
       "text": "Palm oil",
-      "value": "palmoil",
+      "value": "Palm oil",
 
     },
     {
       "text": "Soya",
-      "value": "soya",
+      "value": "Soya",
 
     },
     {
       "text": "Cocoa",
-      "value": "cocoa",
+      "value": "Cocoa",
+
+    }
+   
+  ],
+
+  "commodities": [
+    {
+      "text": "Palm oil",
+      "value": "Palm oil",
+
+    },
+    {
+      "text": "Soya",
+      "value": "Soya",
+
+    },
+    {
+      "text": "Cocoa",
+      "value": "Cocoa",
 
     },
     {
       "text": "Beef",
-      "value": "beef",
+      "value": "Beef",
 
     },
     {
       "text": "Coffee",
-      "value": "coffee",
+      "value": "Coffee",
 
     },
     {
       "text": "Leather",
-      "value": "leather",
+      "value": "Leather",
 
     },
     {
       "text": "Maize",
-      "value": "maize",
+      "value": "Maize",
 
     },
     {
       "text": "Rubber",
-      "value": "rubber",
+      "value": "Rubber",
 
     }
   ],

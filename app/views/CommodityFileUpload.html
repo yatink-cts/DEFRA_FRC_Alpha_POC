@@ -21,7 +21,7 @@
     <div class="govuk-grid-column-two-thirds">
       <form  action="/checkanswers7" method="post">
 
-      <h1 class="govuk-heading-l">
+      <h1 class="govuk-heading-xl">
         Provide more details below (optional)
       </h1>
 
@@ -34,6 +34,22 @@
         <h2 class="govuk-heading-m"> {{commodity.text}} </h2> 
     
       
+      {{ govukFileUpload({
+        id: "file-upload-1",
+        name: "file-upload-1",
+        label: {
+          text: "Upload your file"
+        }
+      }) }}
+
+      {{ govukFileUpload({
+        id: "file-upload-1",
+        name: "file-upload-1",
+        label: {
+          text: "Upload your file"
+        }
+      }) }}
+
       {{ govukFileUpload({
         id: "file-upload-1",
         name: "file-upload-1",

@@ -34,7 +34,7 @@ router.post('/Login-answer', function (req, res) {
   router1.post('/FRC', function (req, res) {
 
     let FRC = new Array();
-
+   
     FRC = req.session.data['FRC'];
     let len = FRC.length;
 
@@ -88,7 +88,7 @@ router.post('/Login-answer', function (req, res) {
         res.redirect('/Page_4');
       }
       else if (AnnualIncome >= 500) {
-        res.redirect('/CommodityVolumeGetController');
+        res.redirect('/PeriodOfExemption');
       }
 
 
@@ -135,8 +135,31 @@ router.post('/Login-answer', function (req, res) {
           }
 
         },
+        router7.post('/Userjourney', function (req, res) {
+
+
+          var Userservice = req.session.data['Userservice'];
+
+          console.log("Exemption:", Userservice);
+          if(Userservice=="Exemption")
+          {
+            res.redirect("/Page_3")
+
+          }
+          else{
+            res.redirect("/amendCommodities")
+          }
+
+          // Check whether the variable matches a condition
+
+
+         
+
+        },
 
           router6.post('/commodityvolume', function (req, res) {
+            // console.log("dates",req.session.data['passport-issued']);
+
             let count = 0;
             let FRC = new Array();
             FRC = req.session.data['FRC'];
@@ -147,6 +170,7 @@ router.post('/Login-answer', function (req, res) {
             var Descritption = req.session.data['description'];
             let fromYear = req.session.data['fromYear'];
             let toYear = req.session.data['toYear'];
+            let count1=0;
 
           console.log("req.body:", req.body);
             
@@ -167,25 +191,44 @@ router.post('/Login-answer', function (req, res) {
             });
             req.session.data['selectedCommodities'] = selectedCommodities
             console.log("sc", req.session.data['selectedCommodities']);
-            if(req.session.data['selectedCommodities'].find(commodity=>commodity.errorMessage)){
-
-                  return res.redirect("/CommodityVolumePage")
-              
+            for(let i=0;i<req.session.data['selectedCommodities'].length;i++)
+            {
+              if(selectedCommodities[i].errorMessage!=undefined)
+              {
+              count1++;
               }
-            res.redirect("/Page_7")
-            
-            
-
-
-
-
-            if (AnnualIncome1 >= 500) {
-            
-                res.redirect('/checkanswers7')
+              console.log("df",count1);
               
             }
+            if(count1>0)
+            {
+              return res.redirect("/CommodityVolumePage")
+            }
+            else{
+              res.redirect("/Page_7")
+            }
+            // if(req.session.data['selectedCommodities'].find(commodity=>commodity.errorMessage)){
+            //   console.log("getsin 171");
+
+            //       return res.redirect("/CommodityVolumePage")
+              
+            //   }
            
-                res.redirect('/checkanswers4')
+            // res.redirect("/Page_7")
+             
+                          
+            
+
+
+
+
+            // if (AnnualIncome1 >= 500) {
+            
+            //     res.redirect('/checkanswers7')
+              
+            // }
+           
+            //     res.redirect('/checkanswers4')
               
             
 
@@ -204,4 +247,4 @@ router.post('/Login-answer', function (req, res) {
     )
   )
 )
-
+)

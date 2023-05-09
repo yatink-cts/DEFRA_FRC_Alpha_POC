@@ -22,7 +22,7 @@
 
       
 
-      <form class="form" action="/Page_2" method="post">
+      <form class="form" action="/Userjourney" method="post">
 
         <p>
 
@@ -59,17 +59,18 @@
                 </div> -->
 
               {{ govukRadios({
-                name: "Exemption",
+                name: "Userservice",
+               
                
                
                 items: [
                   {
-                    value: "File a new exemption",
+                    value: "Exemption",
                     text: "File a new exemption"
                   },
                   {
-                    value: "File a new due diligence report",
-                    text: "File a new due diligence report"
+                    value: "Re-Exemption",
+                    text: "File a re-submission for an exemption"
                   }
                 ]
               }) }}
