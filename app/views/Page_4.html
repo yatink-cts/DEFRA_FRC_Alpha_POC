@@ -38,19 +38,23 @@
                
               </legend>
               
-              <h2 class="govuk-heading-xl">
+              <!-- <h2 class="govuk-heading-xl">
              Do you have a parent company?
-              </h2>
+              </h2> -->
 
               {{ govukRadios({
                 id: "ParentCompany",
-                name: "ParentCompany",
+                name: "ParentCompany",               
+                
                 fieldset: {
                   legend: {
-                    
-                    isPageHeading: true,
+                    text: "  Do you have a parent company?",
+                    isPageHeading: true,                  
                     classes: "govuk-fieldset__legend--l"
                   }
+                },
+                hint: {
+                  text: "For example, your business is owned by a larger holding company."
                 },
                 items: [
                   {

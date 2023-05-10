@@ -28,7 +28,7 @@
             id: "subject",
             name: "subject",
             label: {
-              text: "Parent company name"
+              text: "What is your parent company name?"
             },
               hint: {
               text: "Select the company name from the below list or manually add it"
@@ -66,10 +66,10 @@
           }) }}
 
           {{ govukInput({
-            id: "cost",
-            name: "cost",
+            id: "ParentCompanyAnnualIncome",
+            name: "ParentCompanyAnnualIncome",
             label: {
-              text: "Enter your parent company’s global annual turnover"
+              text: "What is your parent company’s annual turnover?"
               
             },
             prefix: {
@@ -83,4 +83,5 @@
     </div>
    
 </div>
+<a class="govuk-link" href="Dashboard">Cancel and return to dashboard</a>
 {% endblock %}

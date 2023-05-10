@@ -41,7 +41,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
       <h2 class="govuk-heading-xl">
         How much of these commodities do you use annually?
       </h2>
-      <p>Enter the segregated volume for all the commodities selected</p>
+      <p>Each commodity amount must not be more than 999 tonnes.</p>
 
       <dl>
         {% for commodity in data['selectedCommodities'] %}
@@ -60,7 +60,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           name: commodity.id,
           value:commodity.value if commodity.value else "",
           suffix: {
-          text: "tonne"
+          text: "tonnes"
           },
           errorMessage:
           {

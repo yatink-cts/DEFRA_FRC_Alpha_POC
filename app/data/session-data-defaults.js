@@ -64,7 +64,7 @@ module.exports = {
 
     commodities: {
 
-      invalid: 'The volume must be less than 200 tonnes'
+      invalid: 'The volume must be less than 999 tonnes'
 
     }
   }

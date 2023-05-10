@@ -186,7 +186,7 @@ router.post('/Login-answer', function (req, res) {
             console.log("index",index);
             console.log("selectedCommoditiesindex",selectedCommodities[index]);
                selectedCommodities[index].value = value
-                selectedCommodities[index].errorMessage = value > 200 ? error.invalid : undefined
+                selectedCommodities[index].errorMessage = value > 999 ? error.invalid : undefined
             
             });
             req.session.data['selectedCommodities'] = selectedCommodities
@@ -237,9 +237,35 @@ router.post('/Login-answer', function (req, res) {
 
 
           },
+          router8.post('/Checkanscontroller', function (req, res) {
+
+
+            var AnnualIncome = req.session.data['AnnualIncome'];
+            var ParentCompany=req.session.data['ParentCompany'];
+  
+            console.log("ParentCompany:", ParentCompany);
+            if(AnnualIncome<500 && ParentCompany =="Yes")
+            {
+              res.redirect("/checkanswerswithParentCompany")
+  
+            }
+            else if (AnnualIncome<500 && ParentCompany =="No"){
+              res.redirect("/checkanswerswithoutParentCompany")
+            }
+            else if(AnnualIncome>500)
+            {
+              res.redirect("/checkanswers7")
+            }
+  
+            // Check whether the variable matches a condition
+  
+  
+           
+  
+          },
 
             
-
+          )
             )
           )
         )

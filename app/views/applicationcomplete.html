@@ -3,7 +3,15 @@
 {% block pageTitle %}
   Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
-
+{% block beforeContent %}
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "alpha"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{% endblock %}
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -18,9 +26,12 @@
       </form>
 
       {{ govukInsetText({
-        text: "You should save the above reference number for all the future transaction related to above submission."
+        text: "Save this reference number for any future support or transactions related to your submission."
       }) }}
+      <label class="govuk-label govuk-label--m" >Next Steps </label>
 
+<p>If there are any questions about your submission, a regulator 
+  will contact you at the email or phone number that you provided.</p>
     </div>
   </div>
 
