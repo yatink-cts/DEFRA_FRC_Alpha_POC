@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Content page template – {{ serviceName }} – GOV.UK Prototype Kit
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,83 +12,116 @@
   },
   html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
-<div class="govuk-breadcrumbs">
-  <ol class="govuk-breadcrumbs__list">
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
-    </li>
-    <li class="govuk-breadcrumbs__list-item">
-      <a class="govuk-breadcrumbs__link" href="#">Section</a>
-    </li>
-    
-  </ol>
-</div>
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
-
-  <div class="govuk-grid-row">
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form class="form" action="/Page_1" method="post">
-        <p>Welcome</p>
-      <h1 class="govuk-heading-xl">
-        Report your Forest Risk Commodities due diligence
-      </h1>
-      <h3 class="govuk-heading-m"> For [COMPANY NAME]</h3>
-      <button class="govuk-button" data-module="govuk-button">New Submission</button>
-      <div>
-        <p>Submissions</p>
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--l">In progress</caption>
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Year</th>
-              <th scope="col" class="govuk-table__header">Type</th>
-              <th scope="col" class="govuk-table__header">Action</th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">2023 - 2024</th>
-              <td class="govuk-table__cell">Report</td>
-              <td class="govuk-table__cell"> <a href="#">Edit </a></td>
-            </tr>
-            
-          </tbody>
-        </table>
-        <p>Submissions</p>
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--l">Completed</caption>
-          <thead class="govuk-table__head">
-            <tr class="govuk-table__row">
-              <th scope="col" class="govuk-table__header">Year</th>
-              <th scope="col" class="govuk-table__header">Type</th>
-              <th scope="col" class="govuk-table__header">Action</th>
-            </tr>
-          </thead>
-          <tbody class="govuk-table__body">
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">2022 - 2023</th>
-              <td class="govuk-table__cell">Report</td>
-              <td class="govuk-table__cell"> <a href="#">View </a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">2021-2022</th>
-              <td class="govuk-table__cell">Re-exemption</td>
-              <td class="govuk-table__cell"> <a href="#">View </a></td>
-            </tr>
-            <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">2020-2021</th>
-              <td class="govuk-table__cell">Exemption</td>
-              <td class="govuk-table__cell"> <a href="#">View </a></td>
-            </tr>
-            
-          </tbody>
-        </table>
+
+      <h1 class="govuk-heading-xl">Report your forest risk commodity due diligence</h1>
+
+      <h2 class="govuk-heading-m">For[COMPANY NAME] </h2>
+
+      <form action="/Page_1" method="post" novalidate>     
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+        New Submission
+        </button>
+
+      </form>
+
+ <p></p>
+ <p>Submissions</p>
+ <h2 class="govuk-heading-m"> InProgress  </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m">
+            Submission period 
+          </dt>
+          <dd class="govuk-summary-list__key">
+            Type            
+          </dd>
+          <dd class="govuk-summary-list__key">
+            Action            
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {{ data['fromMonth'] }}/   {{ data['fromYear'] }} to  {{ data['toMonth'] }}/{{ data['toYear'] }}
+          </dt>
+          <dd class="govuk-summary-list__value">
+          exemption
+          </dd>
+          <dd  class="govuk-summary-list__value">
+            <a href="/checkanswers7">
+              Edit              
+            </a>
+          </dd>
+        </div>
+
+        
+
+
        
-        </form>
-    
+        <p></p>
+       
+       
+        
+       
+          
+      </dl>
+
+      <p>Submissions</p>
+      <h2 class="govuk-heading-m"> Completed  </h2>
+           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-heading-m">
+                 Submission period 
+               </dt>
+               <dd class="govuk-summary-list__key">
+                 Type            
+               </dd>
+               <dd class="govuk-summary-list__key">
+                 Action            
+               </dd>
+             </div>
+     
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                {{ data['fromMonth'] }}/   {{ data['fromYear'] }} to  {{ data['toMonth'] }}/{{ data['toYear'] }}
+               </dt>
+               <dd class="govuk-summary-list__value">
+               exemption
+               </dd>
+               <dd  class="govuk-summary-list__value">
+                 <a href="/Page_4">
+                   View              
+                 </a>
+                 &nbsp &nbsp &nbsp
+                 <a href="/Page_4">
+                  Amend              
+                </a>
+                 </dd>
+             </div>
+     
+             
+     
+     
+            
+             <p></p>
+            
+            
+             
+            
+               
+           </dl>
+     
+
+      
+
+
     </div>
   </div>
-
 {% endblock %}

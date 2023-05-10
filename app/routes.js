@@ -13,6 +13,8 @@ const router5 = govukPrototypeKit.requests.setupRouter()
 const router6 = govukPrototypeKit.requests.setupRouter()
 const router7 = govukPrototypeKit.requests.setupRouter()
 const router8 = govukPrototypeKit.requests.setupRouter()
+const router9=govukPrototypeKit.requests.setupRouter()
+
 // Run this code when a form is submitted to 'juggling-balls-answer'
 router.post('/Login-answer', function (req, res) {
 
@@ -56,7 +58,7 @@ router.post('/Login-answer', function (req, res) {
 
  //console.log("commoditydata",req.session.data['commodities']);
     
- req.session.data['selectedCommodities']= req.session.data['FRC'].map(commodity=>{
+ c= req.session.data['FRC'].map(commodity=>{
 
       const config = req.session.data['commodities'].find(_config=>_config.value === commodity)
       
@@ -136,8 +138,7 @@ router.post('/Login-answer', function (req, res) {
 
         },
         router7.post('/Userjourney', function (req, res) {
-
-
+         
           var Userservice = req.session.data['Userservice'];
 
           console.log("Exemption:", Userservice);
@@ -239,7 +240,49 @@ router.post('/Login-answer', function (req, res) {
           },
           router8.post('/Checkanscontroller', function (req, res) {
 
+       
+            let fromYear = req.session.data['fromYear'];
+            let toYear = req.session.data['toYear'];
+           
+            var AnnualIncome = req.session.data['AnnualIncome'];
+            var ParentCompany=req.session.data['ParentCompany'];
+  
+            console.log("ParentCompany:", ParentCompany);
+            if(AnnualIncome<500 && ParentCompany =="Yes")
+            {
+              res.redirect("/checkanswerswithParentCompany")
+             // localStorage.setItem("answerpage","/checkanswerswithParentCompany");
+  
+            }
+            else if (AnnualIncome<500 && ParentCompany =="No"){
+              res.redirect("/checkanswerswithoutParentCompany")
+              //localStorage.setItem("answerpage","/checkanswerswithoutParentCompany");
+            }
+            else if(AnnualIncome>500)
+            {
+              res.redirect("/checkanswers7")
+             // localStorage.setItem("answerpage","/checkanswers7");
+            }
+  
+            // Check whether the variable matches a condition
+  
+  
+           
+  
+          },
 
+          router9.post('/getdata', function (req, res) {
+        
+            const userData = {
+              Period: "2023-2024",
+              Items: [
+                { com: "Soy", name: "Angular" },
+                { com: "Coco", name: "Angular" },
+                
+              ],
+            };
+            localStorage.setItem("userData", JSON.stringify(userData));
+            console.log("userdata",userData);
             var AnnualIncome = req.session.data['AnnualIncome'];
             var ParentCompany=req.session.data['ParentCompany'];
   
@@ -263,6 +306,7 @@ router.post('/Login-answer', function (req, res) {
            
   
           },
+          )
 
             
           )
