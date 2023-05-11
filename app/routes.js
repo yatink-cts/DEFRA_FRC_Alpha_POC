@@ -14,13 +14,13 @@ const router6 = govukPrototypeKit.requests.setupRouter()
 const router7 = govukPrototypeKit.requests.setupRouter()
 const router8 = govukPrototypeKit.requests.setupRouter()
 const router9=govukPrototypeKit.requests.setupRouter()
-
+const exmap = new Map();
 // Run this code when a form is submitted to 'juggling-balls-answer'
 router.post('/Login-answer', function (req, res) {
 
 
   var Accountholder = req.session.data['Accountholder'];
-  console.log("Accountholder:", Accountholder);
+  //console.log("Accountholder:", Accountholder);
 
   // Check whether the variable matches a condition
   if (Accountholder == "Yes") {
@@ -56,9 +56,36 @@ router.post('/Login-answer', function (req, res) {
   router1.get('/CommodityVolumeGetController', function (req, res) {
 
 
- //console.log("commoditydata",req.session.data['commodities']);
+    let  fromMonth =req.session.data['fromMonth'];
+    let fromYear=req.session.data['fromYear'];
+    let toMonth= req.session.data['toMonth'];
+    let toYear=req.session.data['toYear'];
+
+    function getMonthName(monthNumber) {
+      const date = new Date();
+      date.setMonth(monthNumber - 1);
     
- c= req.session.data['FRC'].map(commodity=>{
+      return date.toLocaleString('en-US', {
+        month: 'long',
+      });
+    }
+  
+
+   
+ req.session.data['FromPeriod']=getMonthName(fromMonth).concat(" ", fromYear);
+ req.session.data['ToPeriod']=getMonthName(toMonth).concat(" ", toYear);
+ //console.log("req.session.data['FromPeriod']",req.session.data['FromPeriod']);
+ //console.log(req.session.data['ToPeriod'],req.session.data['ToPeriod']);
+//  exmap.set(req.session.data['FromPeriod'], req.session.data['Userservice']);
+//  console.log("exmap",exmap);
+//  localStorage.setItem("lastname", "Smith");
+//  document.getElementById("test").innerHTML=localStorage.getItem("lastname");
+
+
+   // {{ data['fromMonth'] }}/   {{ data['fromYear'] }} to  {{ data['toMonth'] }}/{{ data['toYear'] }}
+ 
+    
+ req.session.data['selectedCommodities']= req.session.data['FRC'].map(commodity=>{
 
       const config = req.session.data['commodities'].find(_config=>_config.value === commodity)
       
@@ -74,7 +101,7 @@ router.post('/Login-answer', function (req, res) {
       
       })
      
-   // console.log(" req.session.data['selectedCommodities']", req.session.data['selectedCommodities']);
+  // console.log(" req.session.data['selectedCommodities']", req.session.data['selectedCommodities']);
     res.redirect('/CommodityVolumePage')
     
 
@@ -86,7 +113,7 @@ router.post('/Login-answer', function (req, res) {
 
       var AnnualIncome = req.session.data['AnnualIncome'];
       if (AnnualIncome < 500) {
-        console.log("AnnualIncome:", AnnualIncome);
+      //  console.log("AnnualIncome:", AnnualIncome);
         res.redirect('/Page_4');
       }
       else if (AnnualIncome >= 500) {
@@ -121,7 +148,7 @@ router.post('/Login-answer', function (req, res) {
 
           var ParentCompanyAnnualIncome = req.session.data['ParentCompanyAnnualIncome'];
 
-          console.log("ParentCompanyAnnualIncome:", ParentCompanyAnnualIncome);
+         // console.log("ParentCompanyAnnualIncome:", ParentCompanyAnnualIncome);
 
           // Check whether the variable matches a condition
 
@@ -139,9 +166,12 @@ router.post('/Login-answer', function (req, res) {
         },
         router7.post('/Userjourney', function (req, res) {
          
+          //sessionStorage.clear();
+          req.session.data['complete'] = 'No';
+         
           var Userservice = req.session.data['Userservice'];
 
-          console.log("Exemption:", Userservice);
+         // console.log("req.session.data['period']='January':", req.session.data['period']='January');
           if(Userservice=="Exemption")
           {
             res.redirect("/Page_3")
@@ -173,7 +203,7 @@ router.post('/Login-answer', function (req, res) {
             let toYear = req.session.data['toYear'];
             let count1=0;
 
-          console.log("req.body:", req.body);
+          //console.log("req.body:", req.body);
             
 
             const selectedCommodities = [...req.session.data['selectedCommodities']];
@@ -184,21 +214,21 @@ router.post('/Login-answer', function (req, res) {
               console.log("commodityvalue",commodity, value);
             
                 const index = selectedCommodities.findIndex(_config=>_config.id === commodity);
-            console.log("index",index);
-            console.log("selectedCommoditiesindex",selectedCommodities[index]);
+         //   console.log("index",index);
+           // console.log("selectedCommoditiesindex",selectedCommodities[index]);
                selectedCommodities[index].value = value
                 selectedCommodities[index].errorMessage = value > 999 ? error.invalid : undefined
             
             });
             req.session.data['selectedCommodities'] = selectedCommodities
-            console.log("sc", req.session.data['selectedCommodities']);
+            //console.log("sc", req.session.data['selectedCommodities']);
             for(let i=0;i<req.session.data['selectedCommodities'].length;i++)
             {
               if(selectedCommodities[i].errorMessage!=undefined)
               {
               count1++;
               }
-              console.log("df",count1);
+              //console.log("df",count1);
               
             }
             if(count1>0)
@@ -207,29 +237,13 @@ router.post('/Login-answer', function (req, res) {
             }
             else{
               res.redirect("/Page_7")
-            }
-            // if(req.session.data['selectedCommodities'].find(commodity=>commodity.errorMessage)){
-            //   console.log("getsin 171");
-
-            //       return res.redirect("/CommodityVolumePage")
-              
-            //   }
-           
-            // res.redirect("/Page_7")
-             
-                          
+            }                         
             
 
 
 
 
-            // if (AnnualIncome1 >= 500) {
             
-            //     res.redirect('/checkanswers7')
-              
-            // }
-           
-            //     res.redirect('/checkanswers4')
               
             
 
@@ -238,55 +252,23 @@ router.post('/Login-answer', function (req, res) {
 
 
           },
-          router8.post('/Checkanscontroller', function (req, res) {
+          router8.post('/appcomplete', function (req, res) {
+            req.session.data['complete'] = 'Yes';
+            res.redirect("/applicationcomplete");
 
-       
-            let fromYear = req.session.data['fromYear'];
-            let toYear = req.session.data['toYear'];
-           
-            var AnnualIncome = req.session.data['AnnualIncome'];
-            var ParentCompany=req.session.data['ParentCompany'];
-  
-            console.log("ParentCompany:", ParentCompany);
-            if(AnnualIncome<500 && ParentCompany =="Yes")
-            {
-              res.redirect("/checkanswerswithParentCompany")
-             // localStorage.setItem("answerpage","/checkanswerswithParentCompany");
-  
-            }
-            else if (AnnualIncome<500 && ParentCompany =="No"){
-              res.redirect("/checkanswerswithoutParentCompany")
-              //localStorage.setItem("answerpage","/checkanswerswithoutParentCompany");
-            }
-            else if(AnnualIncome>500)
-            {
-              res.redirect("/checkanswers7")
-             // localStorage.setItem("answerpage","/checkanswers7");
-            }
-  
-            // Check whether the variable matches a condition
-  
-  
-           
-  
+            //console.log("APPLICATION COMPLETED",exmap);
+            // req.session.data['exmap'] =exmap
+            // console.log("APPLICATION COMPLETED", req.session.data['exmap']);
+
           },
 
           router9.post('/getdata', function (req, res) {
+           
         
-            const userData = {
-              Period: "2023-2024",
-              Items: [
-                { com: "Soy", name: "Angular" },
-                { com: "Coco", name: "Angular" },
-                
-              ],
-            };
-            localStorage.setItem("userData", JSON.stringify(userData));
-            console.log("userdata",userData);
             var AnnualIncome = req.session.data['AnnualIncome'];
             var ParentCompany=req.session.data['ParentCompany'];
   
-            console.log("ParentCompany:", ParentCompany);
+            //console.log("ParentCompany:", ParentCompany);
             if(AnnualIncome<500 && ParentCompany =="Yes")
             {
               res.redirect("/checkanswerswithParentCompany")

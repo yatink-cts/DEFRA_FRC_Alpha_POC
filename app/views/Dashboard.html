@@ -35,8 +35,8 @@
  <p>Submissions</p>
  <h2 class="govuk-heading-m"> InProgress  </h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-m">
+        <div  class="govuk-summary-list__row">
+          <dt  class="govuk-heading-m">
             Submission period 
           </dt>
           <dd class="govuk-summary-list__key">
@@ -46,20 +46,21 @@
             Action            
           </dd>
         </div>
-
+        {% if (data['complete'] =="No") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            {{ data['fromMonth'] }}/   {{ data['fromYear'] }} to  {{ data['toMonth'] }}/{{ data['toYear'] }}
+            {{ data['FromPeriod'] }} -  {{ data['ToPeriod'] }}
           </dt>
           <dd class="govuk-summary-list__value">
-          exemption
+            {{ data['Userservice']}}
           </dd>
           <dd  class="govuk-summary-list__value">
-            <a href="/checkanswers7">
+            <a href="javascript:javascript:history.go(-1)">
               Edit              
             </a>
           </dd>
         </div>
+        {%endif%}
 
         
 
@@ -87,24 +88,62 @@
                  Action            
                </dd>
              </div>
-     
+             {% if (data['complete'] =="Yes") %}
+            
              <div class="govuk-summary-list__row">
                <dt class="govuk-summary-list__key">
-                {{ data['fromMonth'] }}/   {{ data['fromYear'] }} to  {{ data['toMonth'] }}/{{ data['toYear'] }}
+                 {{ data['FromPeriod'] }} -  {{ data['ToPeriod'] }}
                </dt>
                <dd class="govuk-summary-list__value">
-               exemption
+                 {{ data['Userservice']}}
                </dd>
                <dd  class="govuk-summary-list__value">
-                 <a href="/Page_4">
-                   View              
-                 </a>
-                 &nbsp &nbsp &nbsp
-                 <a href="/Page_4">
-                  Amend              
+                <a href="/checkanswers7">
+                  View              
                 </a>
-                 </dd>
+                &nbsp &nbsp &nbsp
+                <a href="/amendcommodities">
+                 Amend              
+               </a>
+                </dd>
              </div>
+             {%endif%}
+
+             <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Apr 2025 - Mar 2026
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Exemption
+              </dd>
+              <dd  class="govuk-summary-list__value">
+               <a href="/checkanswers7">
+                 View              
+               </a>
+               &nbsp &nbsp &nbsp
+               <a href="/amendcommodities">
+                Amend              
+              </a>
+               </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Apr 2021 - Mar 2022
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Exemption
+              </dd>
+              <dd  class="govuk-summary-list__value">
+               <a href="/checkanswers7">
+                 View              
+               </a>
+               &nbsp &nbsp &nbsp
+               <a href="/amendcommodities">
+                Amend              
+              </a>
+               </dd>
+            </div>
+             
      
              
      
