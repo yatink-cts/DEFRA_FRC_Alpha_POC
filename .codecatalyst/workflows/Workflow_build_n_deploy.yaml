@@ -1,4 +1,4 @@
-Name: Workflow_d381
+Name: Workflow_build_n_deploy
 SchemaVersion: "1.0"
 
 # Optional - Set automatic triggers.
