@@ -29,7 +29,7 @@
             Annual turnover 
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['AnnualIncome'] }}
+            200 mill
             
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -45,7 +45,7 @@
             Exemption period
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['fromMonth'] }}/   {{ data['fromYear'] }} to  {{ data['toMonth'] }}/{{ data['toYear'] }}
+          April 2021 - March 2022
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/PeriodOfExemption">
@@ -60,7 +60,7 @@
             Commodity
           </dt>
           <dd class="govuk-summary-list__value">
-          {{data['FRC']}}
+         Soy,Rubber
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="/FRCcommodities">
@@ -76,9 +76,9 @@
         <p></p>
        
        
-        {% for commodity in data['selectedCommodities'] %}
+        
        <p></p>
-        <h2 class="govuk-heading-m"> {{commodity.text}}  </h2>
+        <h2 class="govuk-heading-m"> Rubber  </h2>
 
         <div class="govuk-summary-list__row">
          
@@ -87,7 +87,30 @@
           </dt>
          
           <dd class="govuk-summary-list__value">
-            {{commodity.value}} tonnes
+           500 tonnes
+          
+          </dd>
+         
+          <dd class="govuk-summary-list__actions">
+            <a href="/CommodityVolumePage">
+              Change
+              
+            </a>
+          </dd>
+        
+        </div>
+
+        <p></p>
+        <h2 class="govuk-heading-m"> Rubber  </h2>
+
+        <div class="govuk-summary-list__row">
+         
+          <dt class="govuk-summary-list__key">
+            Expected volume
+          </dt>
+         
+          <dd class="govuk-summary-list__value">
+           500 tonnes
           
           </dd>
          
@@ -107,7 +130,7 @@
           </dt>
          
           <dd class="govuk-summary-list__value">
-            {{ data['description'] }}
+            Methodology
           
           </dd>
          
@@ -119,41 +142,9 @@
           </dd>
         
         </div>
-        {% endfor %} 
+      
 
-        {% if (data['AnnualIncome'] <550) and ( data['ParentCompany']=="Yes") %}
-        <p></p>
-        <h2 class="govuk-heading-m">Parent company details </h2>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Parent company
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['ParentCompany'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a href="/ParentCompanyDetails">
-              Change
-              
-            </a>
-          </dd>
-        </div>
-  
-        <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Parent annual turnover
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['ParentCompanyAnnualIncome'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a href="/ParentCompanyDetails">
-                Change
-                
-              </a>
-            </dd>
-          </div>
-         {% endif %} 
+      
         <!-- {% for item in items %}
         <li>{{ item.title }}</li>
       {% else %}
@@ -167,7 +158,7 @@
               Document category
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['ParentCompanyAnnualIncome'] }}
+              Document name
             </dd>
             <dd class="govuk-summary-list__actions">
               <a href="/ParentCompanyDetails">

@@ -22,7 +22,7 @@
 
     {{prop}}
 
-    <form class="form" action="/getdata" method="post">
+    <form class="form" action="/getdata_amend" method="post">
 
       <p>
         <!-- <h2 class="govuk-heading-xl">
@@ -41,9 +41,9 @@
 
 
             {{ govukCheckboxes({
-              name: "ac",
-              id: "ac",
-              value:data['ac'].text,
+              name: "static_amend_commodity",
+              id: "static_amend_commodity",
+              value:data['static_amend_commodity'].text,
             
               fieldset: {
                 legend: {
@@ -52,7 +52,16 @@
                   classes: "govuk-fieldset__legend--l"
                 }
             },
-                items: data['selectedCommodities']
+            items: [
+            {
+              value: "Soy",
+              text: "Soy"
+            },
+            {
+              value: "Rubber",
+              text: "Rubber"
+            }
+          ]
                   
       
               }) }}

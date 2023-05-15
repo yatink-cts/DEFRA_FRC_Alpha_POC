@@ -22,7 +22,7 @@
 
     {{prop}}
 
-    <form class="form" action="/getdata" method="post">
+    <form class="form" action="/thresholdchange_rubber" method="post">
 
       <p>
         <!-- <h2 class="govuk-heading-xl">
@@ -52,7 +52,16 @@
                   classes: "govuk-fieldset__legend--l"
                 }
             },
-                items: data['selectedCommodities']
+            items: [
+            {
+              value: "Soy",
+              text: "Soy"
+            },
+            {
+              value: "Rubber",
+              text: "Rubber"
+            }
+          ]
                   
       
               }) }}

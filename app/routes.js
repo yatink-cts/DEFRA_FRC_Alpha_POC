@@ -5,15 +5,18 @@
 
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
-const router1 = govukPrototypeKit.requests.setupRouter()
-const router2 = govukPrototypeKit.requests.setupRouter()
-const router3 = govukPrototypeKit.requests.setupRouter()
-const router4 = govukPrototypeKit.requests.setupRouter()
-const router5 = govukPrototypeKit.requests.setupRouter()
-const router6 = govukPrototypeKit.requests.setupRouter()
-const router7 = govukPrototypeKit.requests.setupRouter()
-const router8 = govukPrototypeKit.requests.setupRouter()
-const router9 = govukPrototypeKit.requests.setupRouter()
+const CommodityVolumeGetController_Router = govukPrototypeKit.requests.setupRouter()
+const AnnualIncomeController = govukPrototypeKit.requests.setupRouter()
+
+const ParentCompanyController = govukPrototypeKit.requests.setupRouter()
+const ParentCompanyIncomeController = govukPrototypeKit.requests.setupRouter()
+const commodityvolumeController = govukPrototypeKit.requests.setupRouter()
+const UserjourneyController = govukPrototypeKit.requests.setupRouter()
+const applicationcompletionController = govukPrototypeKit.requests.setupRouter()
+const AmendedCommodityController = govukPrototypeKit.requests.setupRouter()
+const Static_AmendedCommodityController = govukPrototypeKit.requests.setupRouter()
+const AppComplete_AmendedCommodityController = govukPrototypeKit.requests.setupRouter()
+const ExemptionPeriodController = govukPrototypeKit.requests.setupRouter()
 const exmap = new Map();
 
 router.post('/Login-answer', function (req, res) {
@@ -31,44 +34,33 @@ router.post('/Login-answer', function (req, res) {
   }
 
 },
-  // router1.post('/FRC', function (req, res) {
+  ExemptionPeriodController.get('/exemptionperiod', function (req, res) {
 
-  //   let FRC = new Array();
+    let fromMonth = req.session.data['fromMonth'];
+    let fromYear = req.session.data['fromYear'];
+    let toMonth = req.session.data['toMonth'];
+    let toYear = req.session.data['toYear'];
 
-  //   FRC = req.session.data['FRC'];
-  //   let len = FRC.length;   
+    function getMonthName(monthNumber) {
+      const date = new Date();
+      date.setMonth(monthNumber - 1);
 
-  //   // Check whether the variable matches a condition
-  //   if (FRC == "None of the above") {
-  //     // Send user to next page
-  //     res.redirect('/ConfirmFRC')
-  //   } else {
-  //     // Send user to ineligible page
-  //     res.redirect('/AnnunalTurnover')
-  //   }
-
-  // },
-    router1.get('/CommodityVolumeGetController', function (req, res) {
-
-
-      let fromMonth = req.session.data['fromMonth'];
-      let fromYear = req.session.data['fromYear'];
-      let toMonth = req.session.data['toMonth'];
-      let toYear = req.session.data['toYear'];
-
-      function getMonthName(monthNumber) {
-        const date = new Date();
-        date.setMonth(monthNumber - 1);
-
-        return date.toLocaleString('en-US', {
-          month: 'long',
-        });
-      }
+      return date.toLocaleString('en-US', {
+        month: 'long',
+      });
+    }
 
 
 
-      req.session.data['FromPeriod'] = getMonthName(fromMonth).concat(" ", fromYear);
-      req.session.data['ToPeriod'] = getMonthName(toMonth).concat(" ", toYear);
+    req.session.data['FromPeriod'] = getMonthName(fromMonth).concat(" ", fromYear);
+    req.session.data['ToPeriod'] = getMonthName(toMonth).concat(" ", toYear);
+    console.log("57", req.session.data['FromPeriod']);
+    res.redirect("/FRCcommodities");
+
+  },
+    CommodityVolumeGetController_Router.get('/CommodityVolumeGetController', function (req, res) {
+
+
 
       req.session.data['selectedCommodities'] = req.session.data['FRC'].map(commodity => {
 
@@ -91,7 +83,7 @@ router.post('/Login-answer', function (req, res) {
     },
 
 
-      router2.post('/AnnualIncome', function (req, res) {
+      AnnualIncomeController.post('/AnnualIncome', function (req, res) {
 
 
         var AnnualIncome = req.session.data['AnnualIncome'];
@@ -103,17 +95,17 @@ router.post('/Login-answer', function (req, res) {
           res.redirect('/PeriodOfExemption');
         }
       },
-        router4.post('/ParentCompany', function (req, res) {
+        ParentCompanyController.post('/ParentCompany', function (req, res) {
 
 
           var ParentCompany = req.session.data['ParentCompany'];
           var AnnualIncome = req.session.data['AnnualIncome'];
-      
+
           // Check whether the variable matches a condition
           if (ParentCompany == "No") {
 
 
-            if (AnnualIncome < 500) { res.redirect('/checkanswers') }
+            if (AnnualIncome < 500) { res.redirect('/NoService') }
             // Send user to next page
 
           } else if (ParentCompany == "Yes") {
@@ -122,7 +114,7 @@ router.post('/Login-answer', function (req, res) {
           }
 
         },
-          router5.post('/ParentCompanyAnnualIncome', function (req, res) {
+          ParentCompanyIncomeController.post('/ParentCompanyAnnualIncome', function (req, res) {
 
 
             var ParentCompanyAnnualIncome = req.session.data['ParentCompanyAnnualIncome'];
@@ -138,14 +130,14 @@ router.post('/Login-answer', function (req, res) {
             }
 
           },
-            router7.post('/Userjourney', function (req, res) {
+            UserjourneyController.post('/Userjourney', function (req, res) {
               //var Userservice = req.session.data['Userservice'];
-               const {Userservice}=req.session.data;
-               req.session.data={Userservice};
+              const { Userservice } = req.session.data;
+              req.session.data = { Userservice };
               //sessionStorage.clear();
               req.session.data['complete'] = 'No';
 
-             
+
 
               // console.log("req.session.data['period']='January':", req.session.data['period']='January');
               if (Userservice == "Exemption") {
@@ -159,11 +151,12 @@ router.post('/Login-answer', function (req, res) {
 
             },
 
-              router6.post('/commodityvolume', function (req, res) {
-                
+              commodityvolumeController.post('/commodityvolume', function (req, res) {
+
                 let count = 0;
                 let FRC = new Array();
                 FRC = req.session.data['FRC'];
+                let selcommodities = new Array();
 
 
                 var commodityvolume = req.session.data['commodityvolume'];
@@ -173,11 +166,12 @@ router.post('/Login-answer', function (req, res) {
                 let toYear = req.session.data['toYear'];
                 let count1 = 0;
 
+
                 //console.log("req.body:", req.body);
 
 
                 const selectedCommodities = [...req.session.data['selectedCommodities']];
-
+                //   let selcommodities=selectedCommodities.commodity;
                 const error = req.session.data['errors'].commodities
 
                 Object.entries(req.body).forEach(([commodity, value]) => {
@@ -185,10 +179,12 @@ router.post('/Login-answer', function (req, res) {
                   const index = selectedCommodities.findIndex(_config => _config.id === commodity);
                   selectedCommodities[index].value = value
                   selectedCommodities[index].errorMessage = value > 999 ? error.invalid : undefined
-
+                  selcommodities[index] = commodity
                 });
                 req.session.data['selectedCommodities'] = selectedCommodities
-
+                req.session.data['selcommodities'] = selcommodities
+                const sc = [...req.session.data['selcommodities']];
+                console.log("selcommodities", selcommodities)
                 for (let i = 0; i < req.session.data['selectedCommodities'].length; i++) {
                   if (selectedCommodities[i].errorMessage != undefined) {
                     count1++;
@@ -199,22 +195,59 @@ router.post('/Login-answer', function (req, res) {
                   return res.redirect("/CommodityVolumePage")
                 }
                 else {
-                  res.redirect("/Page_7")
+                  res.redirect("/CommodityDetermination")
                 }
               },
-                router8.post('/appcomplete', function (req, res) {
+                applicationcompletionController.post('/appcomplete', function (req, res) {
                   req.session.data['complete'] = 'Yes';
                   res.redirect("/applicationcomplete");
 
                 },
 
-                  router9.post('/getdata', function (req, res) {
-                    console.log("req",req.body);
-                    console.log("req.session.data['selectedCommodities']",req.session.data['selectedCommodities'])
-                    
-console.log(" req.session.data['amendedcommodities']", req.session.data['ac'])
+                  AmendedCommodityController.post('/getdata', function (req, res) {
+                    let amendedcommodity = "";
+                    console.log("req.session.data['selectedCommodities']", req.session.data['selectedCommodities']);
+                    for (let i = 0; i < req.session.data['selectedCommodities'].length; i++) {
+                      if (req.session.data['selectedCommodities'][i].value == req.session.data['ac']) {
+                        console.log(req.session.data['selectedCommodities'][i].text);
+                        amendedcommodity = req.session.data['selectedCommodities'][i].text
+                      }
+
+                    }
+
+                    req.session.data['amendedcommodity'] = amendedcommodity;
+
+                    //console.log("req.session.data['ac']",req.session.data['ac']);             
+                    res.redirect("/thresholdchange");
 
                   },
+                    Static_AmendedCommodityController.post('/getdata_amend', function (req, res) {
+                      console.log("data['static_amend_commodity']", req.session.data['static_amend_commodity']);
+                      //res.redirect("/thresholdchange");
+                      if (req.session.data['static_amend_commodity'] == "Soy") {
+                        res.redirect("/thresholdchange_soya");
+                      }
+                      else {
+                        console.log("rubber");
+                        res.redirect("/thresholdchange_rubber");
+                      }
+
+                    },
+
+                      AppComplete_AmendedCommodityController.post('/getdata_appcomplete', function (req, res) {
+                        //  console.log("data['static_amend_commodity']",req.session.data['static_amend_commodity']) ;            
+                        //res.redirect("/thresholdchange");
+                        if (req.session.data['static_amend_commodity'] == "Soy") {
+                          res.redirect("/application_complete_Soy");
+                        }
+                        else {
+                          console.log("rubber");
+                          res.redirect("/application_complete_rubber");
+                        }
+
+                      },
+                      )
+                    )
 
                   )
 
@@ -227,4 +260,5 @@ console.log(" req.session.data['amendedcommodities']", req.session.data['ac'])
       )
     )
   )
+)
 

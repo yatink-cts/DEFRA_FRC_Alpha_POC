@@ -4,6 +4,7 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
@@ -17,17 +18,13 @@
 
 {% block content %}
 
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {{prop}}
+    
 
-    <form class="form" action="/getdata" method="post">
-
-      <p>
-        <!-- <h2 class="govuk-heading-xl">
-            Which forest risk commodities do you want to amend?
-          </h2> -->
+    <form class="form" action="/checkanswersamend_Soy" method="post">  
 
 
         
@@ -36,30 +33,38 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
              
-            </legend>
-            
+            </legend>        
 
 
-            {{ govukCheckboxes({
-              name: "ac",
-              id: "ac",
-              value:data['ac'].text,
-            
-              fieldset: {
-                legend: {
-                  text: " Which forest risk commodities do you want to amend?",
-                  isPageHeading: true,
-                  classes: "govuk-fieldset__legend--l"
+            {{ govukCharacterCount({
+                name: "amendmethods_soy",
+                id: "amendmethods_soy",
+                maxlength: 200,
+                value:data['amendmethods_soy'],
+
+                label: {
+                  text: "What methods have you used to determine the change in your commodity usage?",
+                  classes: "govuk-label--l",
+                  isPageHeading: true
                 }
-            },
-                items: data['selectedCommodities']
-                  
-      
+               
               }) }}
-             
           </fieldset>
+          <div>
+      
+          
+        
+          
+          {{ govukFileUpload({
+            id: "file-upload-1",
+            name: "file-upload-1",
+            label: {
+              text: "Upload your file"
+            }
+          }) }}
         </div>
-</p>
+        </div>
+
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 
     </form>
