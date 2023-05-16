@@ -17,6 +17,8 @@ const AmendedCommodityController = govukPrototypeKit.requests.setupRouter()
 const Static_AmendedCommodityController = govukPrototypeKit.requests.setupRouter()
 const AppComplete_AmendedCommodityController = govukPrototypeKit.requests.setupRouter()
 const ExemptionPeriodController = govukPrototypeKit.requests.setupRouter()
+const AmendedExemptionPeriodController = govukPrototypeKit.requests.setupRouter()
+const CommodityMethodsController =govukPrototypeKit.requests.setupRouter()
 const exmap = new Map();
 
 router.post('/Login-answer', function (req, res) {
@@ -56,6 +58,17 @@ router.post('/Login-answer', function (req, res) {
     req.session.data['ToPeriod'] = getMonthName(toMonth).concat(" ", toYear);
     console.log("57", req.session.data['FromPeriod']);
     res.redirect("/FRCcommodities");
+
+  },
+
+  CommodityMethodsController.get('/CommodityMethodsController', function (req, res) {
+
+    console.log("req",req.session.data['description'][1]);
+    res.redirect("/CommodityFileUpload");
+    // for(var i=0;i<req.session.data['description'].length;i++)
+    // {
+
+    // }
 
   },
     CommodityVolumeGetController_Router.get('/CommodityVolumeGetController', function (req, res) {
@@ -131,11 +144,13 @@ router.post('/Login-answer', function (req, res) {
 
           },
             UserjourneyController.post('/Userjourney', function (req, res) {
+              
               //var Userservice = req.session.data['Userservice'];
               const { Userservice } = req.session.data;
               req.session.data = { Userservice };
               //sessionStorage.clear();
               req.session.data['complete'] = 'No';
+              req.session.data['amendcomplete'] = 'No';
 
 
 
@@ -205,7 +220,7 @@ router.post('/Login-answer', function (req, res) {
                 },
 
                   AmendedCommodityController.post('/getdata', function (req, res) {
-                    let amendedcommodity = "";
+                   
                     console.log("req.session.data['selectedCommodities']", req.session.data['selectedCommodities']);
                     for (let i = 0; i < req.session.data['selectedCommodities'].length; i++) {
                       if (req.session.data['selectedCommodities'][i].value == req.session.data['ac']) {
@@ -221,6 +236,31 @@ router.post('/Login-answer', function (req, res) {
                     res.redirect("/thresholdchange");
 
                   },
+                  AmendedExemptionPeriodController.post('/getdata_amended_threshold', function (req, res) {
+                    let amendedcommodity = "";
+                    req.session.data['amendcomplete'] = 'Yes';
+                    console.log(" req.session.data['threshold-change]", req.session.data['threshold-change']);
+                    let fromMonth_amend = req.session.data['threshold-change-month'];   
+                    let fromYear_amend = req.session.data['threshold-change-year'];   
+                    let toMonth = req.session.data['toMonth'];
+                      let toYear = req.session.data['toYear'];
+                         console.log("fromMonth_amend",fromMonth_amend);
+                         console.log("fromYear_amend",fromYear_amend);
+
+                    function getMonthName1(monthNumber) {
+                      const date = new Date();
+                      date.setMonth(monthNumber - 1);
+                
+                      return date.toLocaleString('en-US', {
+                        month: 'long',
+                      });
+                    }
+                    req.session.data['FromPeriod_amend'] = getMonthName1(fromMonth_amend).concat(" ", fromYear_amend);
+                    req.session.data['thresholdchange_Amend']=getMonthName1(fromMonth_amend).concat(" ", fromYear_amend).concat("-",getMonthName1(req.session.data['toMonth'])).concat(" ",req.session.data['toYear']);
+                    console.log("Threshold change",req.session.data['thresholdchange_Amend']);
+                    res.redirect("/amendCommodityMethods");
+                  },
+
                     Static_AmendedCommodityController.post('/getdata_amend', function (req, res) {
                       console.log("data['static_amend_commodity']", req.session.data['static_amend_commodity']);
                       //res.redirect("/thresholdchange");
@@ -262,3 +302,5 @@ router.post('/Login-answer', function (req, res) {
   )
 )
 
+)
+)

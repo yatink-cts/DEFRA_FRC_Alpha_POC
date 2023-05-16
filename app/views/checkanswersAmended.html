@@ -67,7 +67,7 @@
                 Amendment start date
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['passport-issued-day'] }}/  {{ data['passport-issued-month'] }}/ {{ data['passport-issued-year'] }}
+              {{ data['threshold-change-day'] }}/  {{ data['threshold-change-month'] }}/ {{ data['threshold-change-year'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a href="/Page_5">
@@ -103,7 +103,7 @@
 
       <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-      <form action="/applicationcomplete" method="post" novalidate>
+      <form action="/applicationcomplete_amended" method="post" novalidate>
 
         <input type="hidden" name="answers-checked" value="true">
 

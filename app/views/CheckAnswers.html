@@ -88,7 +88,7 @@
          
           <dd class="govuk-summary-list__value">
             {{commodity.value}} tonnes
-          
+           
           </dd>
          
           <dd class="govuk-summary-list__actions">
@@ -107,7 +107,7 @@
           </dt>
          
           <dd class="govuk-summary-list__value">
-            {{ data['description'] }}
+            {{ data['description'][loop.index-1] }}
           
           </dd>
          
@@ -195,11 +195,15 @@
 
         <input type="hidden" name="answers-checked" value="true">
 
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-        Submit
-        </button>
+        <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+&nbsp;
+<button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Save and come back later
+</button>
+
 
       </form>
+      <a class="govuk-link" href="Dashboard">Get help with this page</a>
 
     </div>
   </div>

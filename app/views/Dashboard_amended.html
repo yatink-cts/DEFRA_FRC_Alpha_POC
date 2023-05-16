@@ -20,30 +20,6 @@
   <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">Report your forest risk commodity due diligence</h1>
-      {{ govukSelect({
-        id: "subject",
-        name: "subject",
-        label: {
-          text: "Select a company to view details"
-        },
-          
-        items: [
-          {
-            value: "choose",
-            text: "Company List",
-            selected: true
-          },
-          {
-            value: "M & S",
-            text: "M & S"
-          },
-          {
-            value: "Primark",
-            text: "Primark"
-          }
-         ]
-      
-      }) }}
 
       <h2 class="govuk-heading-m">For[COMPANY NAME] </h2>
 
@@ -60,47 +36,31 @@
  <h2 class="govuk-heading-m"> InProgress  </h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div  class="govuk-summary-list__row">
-          <dd class="govuk-summary-list__key">
+          <dt  class="govuk-heading-m">
             Submission period 
-          </dd>
+          </dt>
           <dd class="govuk-summary-list__key">
             Type            
           </dd>
           <dd class="govuk-summary-list__key">
-            Commodities            
-          </dd>
-          <dd class="govuk-summary-list__key">
-           Status            
-         </dd>
-          <dd class="govuk-summary-list__key">
-           Action            
+            Action            
           </dd>
         </div>
-         {% if (data['complete'] =="No") %} 
+        <!-- {% if (data['complete'] =="No") %} -->
         <div class="govuk-summary-list__row">
-          <dd class="govuk-summary-list__key">
-            {{ data['PeriodOfExemption'] }} 
-          </dd>
+          <dt class="govuk-summary-list__key">
+            {{ data['FromPeriod'] }} -  {{ data['ToPeriod'] }}
+          </dt>
           <dd class="govuk-summary-list__value">
             {{ data['Userservice']}}
           </dd>
-          <dd class="govuk-summary-list__value">
-            {{data['FRC']}} 
-          </dd>
-          <dd>
-          <strong class="govuk-tag govuk-tag--blue">
-          Inprogress
-           </strong>
-            
-         
-        </dd>
           <dd  class="govuk-summary-list__value">
             <a href="javascript:javascript:history.go(-1)">
               Edit              
             </a>
           </dd>
         </div>
-         {%endif%} 
+        <!-- {%endif%} -->
 
         
 
@@ -118,9 +78,9 @@
       <h2 class="govuk-heading-m"> Completed  </h2>
            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
              <div class="govuk-summary-list__row">
-               <dt class="govuk-summary-list__key">
+               <dd class="govuk-summary-list__key">
                  Submission period 
-               </dt>
+               </dd>
                <dd class="govuk-summary-list__key">
                  Type            
                </dd>
@@ -134,17 +94,18 @@
                 Action            
                </dd>
              </div>
-             {% if (data['complete'] =="Yes") %} 
+
+             {% if (data['amendcomplete'] =="Yes") %} 
             
              <div class="govuk-summary-list__row">
                <dt class="govuk-summary-list__key">
-                 {{ data['PeriodOfExemption'] }}
+                 {{ data['thresholdchange_Amend'] }}
                </dt>
                <dd class="govuk-summary-list__value">
                  {{ data['Userservice']}}
                </dd>
                <dd class="govuk-summary-list__value">
-                {{data['FRC']}} 
+                {{data['amendedcommodity']}} 
               </dd>
               <dd class="govuk-summary-list__value">
                 <strong class="govuk-tag govuk-tag--green">
@@ -162,6 +123,33 @@
                 </dd>
              </div> 
               {%endif%}
+
+              
+             {% if (data['complete'] =="Yes") %} 
+            
+             <div class="govuk-summary-list__row">
+               <dt class="govuk-summary-list__key">
+                 {{ data['FromPeriod'] }} -  {{ data['ToPeriod'] }}
+               </dt>
+               <dd class="govuk-summary-list__value">
+                 {{ data['Userservice']}}
+               </dd>
+               <dd class="govuk-summary-list__value">
+                {{data['FRC']}} 
+              </dd>
+              <dd class="govuk-summary-list__value">
+                <strong class="govuk-tag govuk-tag--green">
+                  Submitted<br>16/05/2023
+                </strong>
+              </dd>
+               <dd  class="govuk-summary-list__value">
+                <a href="/CheckAnswers">
+                  View              
+                </a>               
+                </dd>
+             </div> 
+              {%endif%}
+             
 
               <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
