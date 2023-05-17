@@ -18,7 +18,59 @@
 
 {% block content %}
 
-<div class="govuk-form-group">
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/exemptionperiod" method="post">
+      <h1 class="govuk-heading-xl">
+        Enter the reporting period of your exemption
+        </h1>
+        {{ govukSelect({
+          id: "ExemptionPeriod",
+          name: "ExemptionPeriod",
+          label: {
+            
+          },
+            hint: {
+            text: "This date range should be for an upcoming reporting period"
+          },
+          items: [
+            
+            {
+              value: "April 2024 - March 2025",
+              text: "April 2024 - March 2025"
+            },
+            {
+              value: "April 2025 - March 2026",
+              text: "April 2025 - March 2026"
+            },
+            {
+              value: "April 2026 - March 2027",
+              text: "April 2026 - March 2027"
+            },
+            {
+              value: "April 2027 - March 2028",
+              text: "April 2027 - March 2028"
+            }
+           ]
+        
+        }) }}
+       
+        <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+        &nbsp;
+        <a href="/Dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+          Save and come back later
+      </a>
+        
+              </form>
+              <a class="govuk-link" href="Dashboard">Get help with this page</a>
+      
+  </div>
+ 
+</div>
+
+<!-- <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <form class="form" action="/exemptionperiod" method="post">
@@ -77,6 +129,6 @@
     
     </fieldset>
     <a class="govuk-link" href="Dashboard">Cancel and return to dashboard</a>
-  </div>
+  </div> -->
  
   {% endblock %}

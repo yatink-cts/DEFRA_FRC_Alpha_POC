@@ -1,0 +1,55 @@
+Exemption scenerio
+
+1-> Start Page == StartFRC.html
+2-> Dashboard  == Dashboard.html
+Click on New submission in Dashboard.html
+3 -> UserServices ==UserServices.html
+if Exemption is selected in radiobutton
+4-> What is your annual turnover? -AnnunalTurnover.html 
+            {{ if annual turnover >100 mill }} 
+
+                4 a->if annual turnover >100 mill -> PeriodOfExemption.html
+                4 b-> selecting commodities ->FRCcommodities.html
+                4 c-> commodity volume collecting ->CommodityVolumePage.html
+                          each commodity volume <999 tonnes if not error throw on same page
+                4 d->methods to determine commodity -> CommodityDetermination.html
+                4 e-> commodity file upload page -> CommodityFileUpload.html
+                4 f-> checkanswers page ->CheckAnswers.html
+                4 g-> application completed -> applicationcomplete.html
+            
+             {{ if annual turnover <100 mill }} 
+
+                4 a-> Do u have a parent company ->ParentCompany.html
+                      
+                      {{if "yes" for Parent company}}
+
+                      1.Getting parent company details->ParentCompanyDetails.html
+
+                          {{ if parent company annual turnover >100 mill }}
+
+                              4 a->if annual turnover >100 mill -> PeriodOfExemption.html
+                             4 b-> selecting commodities ->FRCcommodities.html
+                             4 c-> commodity volume collecting ->CommodityVolumePage.html
+                                 each commodity volume <999 tonnes if not error throw on same page
+                            4 d->methods to determine commodity -> CommodityDetermination.html
+                            4 e-> commodity file upload page -> CommodityFileUpload.html
+                            4 f-> checkanswers page ->CheckAnswers.html
+                            4 g-> application completed -> applicationcomplete.html
+5->  Dashboar page-> Dashboard.html
+
+Amendement Scenerio 
+
+1-> in completed tab of dashboard Click on amend link
+  a-> commodities to amend(Selected commodity earlier) -amendcommodities.html
+  b-> thresholdchange - thresholdchange.html
+  c-> CommodityMethods -amendCommodityMethods.html
+  d-> checkanswersAmended -checkanswersAmended.html
+  e->appliction completed -applicationcomplete_amended.html
+
+  6->back to dashboard -Dashboard_amended.html 
+
+                            
+            
+
+
+
