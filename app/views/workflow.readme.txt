@@ -6,18 +6,7 @@ Click on New submission in Dashboard.html
 3 -> UserServices ==UserServices.html
 if Exemption is selected in radiobutton
 4-> What is your annual turnover? -AnnunalTurnover.html 
-            {{ if annual turnover >100 mill }} 
-
-                4 a->if annual turnover >100 mill -> PeriodOfExemption.html
-                4 b-> selecting commodities ->FRCcommodities.html
-                4 c-> commodity volume collecting ->CommodityVolumePage.html
-                          each commodity volume <999 tonnes if not error throw on same page
-                4 d->methods to determine commodity -> CommodityDetermination.html
-                4 e-> commodity file upload page -> CommodityFileUpload.html
-                4 f-> checkanswers page ->CheckAnswers.html
-                4 g-> application completed -> applicationcomplete.html
-            
-             {{ if annual turnover <100 mill }} 
+{{ if annual turnover <100 mill }} 
 
                 4 a-> Do u have a parent company ->ParentCompany.html
                       
@@ -35,6 +24,17 @@ if Exemption is selected in radiobutton
                             4 e-> commodity file upload page -> CommodityFileUpload.html
                             4 f-> checkanswers page ->CheckAnswers.html
                             4 g-> application completed -> applicationcomplete.html
+            {{ if annual turnover >100 mill }} 
+                4 a->if annual turnover >100 mill -> PeriodOfExemption.html
+                4 b-> selecting commodities ->FRCcommodities.html
+                4 c-> commodity volume collecting ->CommodityVolumePage.html
+                          each commodity volume <999 tonnes if not error throw on same page
+                4 d->methods to determine commodity -> CommodityDetermination.html
+                4 e-> commodity file upload page -> CommodityFileUpload.html
+                4 f-> checkanswers page ->CheckAnswers.html
+                4 g-> application completed -> applicationcomplete.html
+            
+             
 5->  Dashboar page-> Dashboard.html
 
 Amendement Scenerio 
@@ -47,6 +47,11 @@ Amendement Scenerio
   e->appliction completed -applicationcomplete_amended.html
 
   6->back to dashboard -Dashboard_amended.html 
+
+
+  Result on Dashboard:
+
+  
 
                             
             
