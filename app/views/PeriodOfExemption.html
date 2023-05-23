@@ -18,10 +18,62 @@
 
 {% block content %}
 
-<div class="govuk-form-group">
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/exemptionperiod" method="post">
+      <h1 class="govuk-heading-xl">
+        Enter the reporting period of your exemption
+        </h1>
+        {{ govukSelect({
+          id: "ExemptionPeriod",
+          name: "ExemptionPeriod",
+          label: {
+            
+          },
+            hint: {
+            text: "This date range should be for an upcoming reporting period"
+          },
+          items: [
+            
+            {
+              value: "April 2024 - March 2025",
+              text: "April 2024 - March 2025"
+            },
+            {
+              value: "April 2025 - March 2026",
+              text: "April 2025 - March 2026"
+            },
+            {
+              value: "April 2026 - March 2027",
+              text: "April 2026 - March 2027"
+            },
+            {
+              value: "April 2027 - March 2028",
+              text: "April 2027 - March 2028"
+            }
+           ]
+        
+        }) }}
+       
+        <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+        &nbsp;
+        <a href="/Dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+          Save and come back later
+      </a>
+        
+              </form>
+              <a class="govuk-link"  href="#">Get help with this page</a>
+      
+  </div>
+ 
+</div>
+
+<!-- <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <form class="form" action="/Page_2" method="post">
+        <form class="form" action="/exemptionperiod" method="post">
         <h1 class="govuk-fieldset__heading">
             Enter the reporting period of your exemption
         </h1>
@@ -35,7 +87,7 @@
             <label class="govuk-label govuk-date-input__label" for="fromMonth">
               Month
             </label>
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="fromMonth" name="fromMonth" type="text" inputmode="numeric">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="fromMonth" name="fromMonth" value="{{data['fromMonth']}}" type="text" inputmode="numeric">
           </div>
         </div>
         <div class="govuk-date-input__item">
@@ -43,7 +95,7 @@
             <label class="govuk-label govuk-date-input__label" for="fromYear">
               Year
             </label>
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="fromYear" name="fromYear" type="text" inputmode="numeric">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="fromYear" name="fromYear"  value="{{data['fromYear']}}"type="text" inputmode="numeric">
           </div>
         </div>
         
@@ -58,7 +110,7 @@
               <label class="govuk-label govuk-date-input__label" for="toMonth">
                 Month
               </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="toMonth" name="toMonth" type="text" inputmode="numeric">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="toMonth" name="toMonth" value="{{data['toMonth']}}" type="text" inputmode="numeric">
             </div>
           </div>
           <div class="govuk-date-input__item">
@@ -66,7 +118,7 @@
             <label class="govuk-label govuk-date-input__label" for="toYear">
               Year
             </label>
-            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="toYear" name="toYear" type="text" inputmode="numeric">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="toYear" name="toYear" value="{{data['toYear']}}" type="text" inputmode="numeric">
           </div>
           </div>
        
@@ -77,6 +129,6 @@
     
     </fieldset>
     <a class="govuk-link" href="Dashboard">Cancel and return to dashboard</a>
-  </div>
+  </div> -->
  
   {% endblock %}

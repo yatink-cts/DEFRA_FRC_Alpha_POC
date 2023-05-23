@@ -22,7 +22,7 @@
 
       
 
-      <form class="form" action="/ParentCompanyAnnualIncome" method="post">
+      <form class="form" action="/AnnualIncome" method="post">
 
         <p>
 
@@ -38,11 +38,12 @@
               </legend>
               
               <h2 class="govuk-heading-xl">
-                What is your parent company annual turnover?
+                What is your annual turnover?
                 </h2>
                 {{ govukInput({
-                    id: "ParentCompanyAnnualIncome",
-                    name: "ParentCompanyAnnualIncome",
+                    id: "AnnualIncome",
+                    name: "AnnualIncome",
+                    value:data['AnnualIncome'],
                    
                     prefix: {
                       text: "£"
@@ -54,10 +55,14 @@
             </fieldset>
           </div>
 </p>
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
+<button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+&nbsp;
+<a href="/Dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+  Save and come back later
+</a>
 
       </form>
-
+      <a class="govuk-link" href="#">Get help with this page</a>
     </div>
   </div>
 

@@ -32,16 +32,10 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
 
 
     <form class="form" action="/commodityvolume" method="post">
-
-
-
-
-
-
       <h2 class="govuk-heading-xl">
         How much of these commodities do you use annually?
       </h2>
-      <p>Enter the segregated volume for all the commodities selected</p>
+      <p>Each commodity amount must not be more than 999 tonnes.</p>
 
       <dl>
         {% for commodity in data['selectedCommodities'] %}
@@ -60,7 +54,7 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
           name: commodity.id,
           value:commodity.value if commodity.value else "",
           suffix: {
-          text: "tonne"
+          text: "tonnes"
           },
           errorMessage:
           {
@@ -76,11 +70,17 @@ html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a
         </div>
         {% endfor %}
 
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
-
-    </form>
+        <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+        &nbsp;
+        <a href="/Dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+          Save and come back later
+      </a>             
+              </form>
+             
+             
 
   </div>
+  
 </div>
 
 {% endblock %}

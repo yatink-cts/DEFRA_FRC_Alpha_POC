@@ -4,7 +4,6 @@
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-
 {% block beforeContent %}
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
@@ -22,12 +21,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    
+    {{prop}}
 
-    <form class="form" action="/CommodityFileUpload" method="post">
+    <form class="form" action="CommodityVolumeGetController" method="post">
 
       <p>
-        
+        <h2 class="govuk-heading-l">
+          Which forest risk commodities do you use within your UK commercial activity?
+          </h2>
 
 
         
@@ -40,36 +41,29 @@
             
 
 
-            {{ govukCharacterCount({
-                name: "description",
-                id: "description",
-                maxlength: 200,
-                
-  hint: {
-    text: "Refer to the guidance for more details"
-  },
-                label: {
-                  text: "What methods have you used to determine your commodity usage?",
-                  classes: "govuk-label--l",
-                  isPageHeading: true
-                }
-               
+            {{ govukCheckboxes({
+              name: "FRC",
+              id:"FRC",
+              value:data['FRC'],
+              
+          
+                items: data['commodities']
+                  
+      
               }) }}
-
-              {{ govukFileUpload({
-                id: "file-upload-1",
-                name: "file-upload-1",
-                label: {
-                  text: "Upload your file"
-                }
-              }) }}
+             
           </fieldset>
         </div>
 </p>
-      <button class="govuk-button" data-module="govuk-button">Continue</button>
+<button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+&nbsp;
+<a href="/Dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+  Save and come back later
+</a>
 
-    </form>
 
+      </form>
+      <a class="govuk-link" href="Dashboard">Get help with this page</a>
   </div>
 </div>
 

@@ -43,20 +43,7 @@
 
                
 
-                <!-- <div class="govuk-grid-row">
-                  
-                  <div class="govuk-grid-column-two-thirds">
-                    <p>govuk-grid-column-two-thirds</p>
-                    <div class="govuk-grid-row">
-                      <div class="govuk-grid-column-one-half-di">
-                        <p>govuk-grid-column-one-halfjk</p>
-                      </div>
-                      <div class="govuk-grid-column-one-half">
-                        <p>govuk-grid-column-one-half</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
+              
 
               {{ govukRadios({
                 name: "Userservice",
@@ -70,22 +57,29 @@
                   },
                   {
                     value: "Re-Exemption",
-                    text: "File a re-submission for an exemption"
+                    text: "File a new due diligence report"
                   }
                 ]
               }) }}
-              {{ govukInsetText({
+              <!-- {{ govukInsetText({
                 text: "You will be needing a reference number for accessing previous exemption notice or re-submission of existing exemption report."
-              }) }}
+              }) }} -->
               
               
             </fieldset>
           </div>
 </p>
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
-
+        <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+        &nbsp;
+         
+          <a href="/Dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+            Save and come back later
+        </a>
+  
+   
+       
       </form>
-
+      <a class="govuk-link" href="#">Get help with this page</a>
     </div>
   </div>
 

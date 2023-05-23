@@ -25,24 +25,23 @@
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
        
-        {% for item in data['amendCommodities'] %}
         
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Commodity
           </dt>
           <dd class="govuk-summary-list__value">
-           <a> {{item.text}} </a> 
+           <a>  {{ data['amendedcommodity'] }} </a> 
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a href="/Page_2">
+            <a href="/FRCcommodities">
               Change
               <span class="govuk-visually-hidden"> name</span>
             </a>
           </dd>
          
         </div>
-        {% endfor %}
+        
       
        
         
@@ -51,12 +50,12 @@
               Methodology Used
             </dt>
             <dd class="govuk-summary-list__value">
-                {{ data['methods'] }}
+                {{ data['amendmethods'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a href="/Page_7">
+              <a href="/CommodityDetermination">
                 Change
-                <span class="govuk-visually-hidden"> date of birth</span>
+              
               </a>
             </dd>
           </div>
@@ -68,7 +67,7 @@
                 Amendment start date
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['passport-issued-day'] }}/  {{ data['passport-issued-month'] }}/ {{ data['passport-issued-year'] }}
+              {{ data['threshold-change-day'] }}/  {{ data['threshold-change-month'] }}/ {{ data['threshold-change-year'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a href="/Page_5">
@@ -87,7 +86,7 @@
                 Document name
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a href="/Page_4">
+              <a href="/ParentCompany">
                 Change
                 
               </a>
@@ -104,7 +103,7 @@
 
       <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-      <form action="/applicationcomplete" method="post" novalidate>
+      <form action="/applicationcomplete_amended" method="post" novalidate>
 
         <input type="hidden" name="answers-checked" value="true">
 

@@ -20,7 +20,7 @@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="/PeriodOfExemption" method="post">
+      <form class="form" action="/ParentCompanyAnnualIncome" method="post">
         <h1 class="govuk-heading-xl">
             Provide your parent company details
           </h1>
@@ -28,7 +28,7 @@
             id: "subject",
             name: "subject",
             label: {
-              text: "Parent company name"
+              text: "What is your parent company name?"
             },
               hint: {
               text: "Select the company name from the below list or manually add it"
@@ -66,10 +66,10 @@
           }) }}
 
           {{ govukInput({
-            id: "cost",
-            name: "cost",
+            id: "ParentCompanyAnnualIncome",
+            name: "ParentCompanyAnnualIncome",
             label: {
-              text: "Enter your parent company’s global annual turnover"
+              text: "What is your parent company’s annual turnover?"
               
             },
             prefix: {
@@ -78,9 +78,17 @@
             classes: "govuk-!-width-one-third",
             spellcheck: false
           }) }}
-          <button class="govuk-button" data-module="govuk-button">Continue</button>
-        </form>
+          <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+          &nbsp;
+          <a href="/Dashboard" role="button" draggable="false" class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+            Save and come back later
+        </a>
+          
+                </form>
+                <a class="govuk-link" href="#">Get help with this page</a>
+        
     </div>
    
 </div>
+
 {% endblock %}

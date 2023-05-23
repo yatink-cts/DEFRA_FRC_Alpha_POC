@@ -25,7 +25,7 @@
 
       
 
-      <form class="form" action="/amendCommodityMethods" method="post">
+      <form class="form" action="/getdata_amended_threshold" method="post">
 
         <p>
 
@@ -38,8 +38,9 @@
             <fieldset class="govuk-fieldset">
               
                 {{ govukDateInput({
-                    id: "passport-issued",
-                    namePrefix: "passport-issued",
+                    id: "threshold-change",
+                    namePrefix: "threshold-change",
+                    value:data['threshold-change'],
                     fieldset: {
                       legend: {
                         text: "When is the threshold expected to change",
@@ -59,7 +60,7 @@
         <button class="govuk-button" data-module="govuk-button">Continue</button>
        
       </form>
-      <a class="govuk-link" href="Dashboard">Cancel and return to dashboard</a>
+      <a class="govuk-link"  href="#">Cancel and return to dashboard</a>
     </div>
   </div>
 
