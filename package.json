@@ -2,7 +2,9 @@
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start"
+    "start": "govuk-prototype-kit start",
+    "start-dev": "govuk-prototype-kit dev",
+    "build": "gulp build"
   },
   "dependencies": {
     "@govuk-prototype-kit/common-templates": "^1.0.0",
@@ -11,5 +13,12 @@
     "govuk-prototype-kit": "^13.6.1",
     "hmrc-frontend": "^5.27.0",
     "nunjucks": "^3.2.3"
+  },
+  "devDependencies": {
+    "del": "^7.0.0",
+    "fspromises-toolbox": "^1.0.3",
+    "gulp": "^4.0.2",
+    "gulp-beautify": "^3.0.0",
+    "gulp-nunjucks-render": "^2.2.3"
   }
 }
